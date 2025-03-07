@@ -3,12 +3,7 @@
     <ul>
       <li>
         <div class="divide50"><span class="dot">⦁</span> 차량번호</div>
-        <input
-          type="text"
-          name="carNo"
-          class="ip1"
-          @change="handleChangeField"
-        />
+        <input type="text" name="carNo" class="ip1" @input="handleChangeField" />
       </li>
     </ul>
   </div>

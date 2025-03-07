@@ -9,7 +9,7 @@
           name="category"
           attr2=""
           topSelected="전체"
-          @change="handleChangeField"
+          @input="handleChangeField"
           class="datainput"
         />
         <!-- // erpCode="true" -->
@@ -19,7 +19,7 @@
         <input
           type="date"
           name="dt"
-          @change="handleChangeField"
+          @input="handleChangeField"
           class="datainput"
           v-model="searchValues.dt"
         />
@@ -32,15 +32,13 @@
               type="text"
               name="custNm"
               class="ip1"
-              @change="handleChangeField"
+              @input="handleChangeField"
               @keydown="setCustTxt"
               v-model="searchValues.custNm"
             />
           </div>
           <div>
-            <button type="button" @click="handleSearchCust" class="btn_ip">
-              검색
-            </button>
+            <button type="button" @click="handleSearchCust" class="btn_ip">검색</button>
           </div>
         </div>
       </li>
@@ -51,27 +49,20 @@
             <input
               type="text"
               name="prodNm"
-              @change="handleChangeField"
+              @input="handleChangeField"
               @keydown="setItemTxt"
               class="ip1"
               v-model="searchValues.prodNm"
             />
           </div>
           <div>
-            <button type="button" @click="handleSearchItem" class="btn_ip">
-              검색
-            </button>
+            <button type="button" @click="handleSearchItem" class="btn_ip">검색</button>
           </div>
         </div>
       </li>
       <li>
         <div class="divide50"><span class="dot">⦁</span> 차량번호</div>
-        <input
-          type="text"
-          name="carNo"
-          class="datainput"
-          @change="handleChangeField"
-        />
+        <input type="text" name="carNo" class="datainput" @input="handleChangeField" />
       </li>
     </ul>
   </div>

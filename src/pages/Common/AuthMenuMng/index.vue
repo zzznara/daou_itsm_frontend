@@ -33,7 +33,7 @@
                 class="datainput"
                 name="menuId"
                 style="width: 100px"
-                @change="handleMenuChangeField"
+                @input="handleMenuChangeField"
               />
             </li>
             <li style="width: 160px">
@@ -43,7 +43,7 @@
                 class="datainput"
                 name="menuNmKor"
                 style="width: 100px"
-                @change="handleMenuChangeField"
+                @input="handleMenuChangeField"
               />
             </li>
             <li style="width: auto; float: right; padding-left: 0px !important">

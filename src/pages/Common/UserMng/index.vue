@@ -19,6 +19,7 @@
       }"
     />
   </div>
+
   <div class="data_wrap">
     <div class="subdatabox">
       <h5>사용자정보</h5>
@@ -45,7 +46,7 @@
               id="userId"
               name="userId"
               :disabled="isFieldDisabled(state, 'userId', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.userId"
               class="ip2"
             />
@@ -58,7 +59,7 @@
               id="pwd"
               name="pwd"
               :disabled="isFieldDisabled(state, 'pwd', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.pwd"
               class="ip2"
             />
@@ -71,7 +72,7 @@
               id="empNo"
               name="empNo"
               :disabled="isFieldDisabled(state, 'empNo', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.empNo"
               class="ip2"
             />
@@ -84,7 +85,7 @@
               id="nmKor"
               name="nmKor"
               :disabled="isFieldDisabled(state, 'nmKor', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.nmKor"
               class="ip2"
             />
@@ -97,7 +98,7 @@
               id="nmEng"
               name="nmEng"
               :disabled="isFieldDisabled(state, 'nmEng', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.nmEng"
               class="ip2"
             />
@@ -110,7 +111,7 @@
               id="nmChn"
               name="nmChn"
               :disabled="isFieldDisabled(state, 'nmChn', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.nmChn"
               class="ip2"
             />
@@ -123,7 +124,7 @@
               id="email"
               name="email"
               :disabled="isFieldDisabled(state, 'email', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.email"
               class="ip2"
             />
@@ -136,8 +137,8 @@
               <input
                 id="dptCd"
                 name="dptCd"
-                :disabled="true"
-                @change="handleChangeField"
+                disabled
+                @input="handleChangeField"
                 v-model="fieldValues.dptCd"
                 class="ip2"
               />
@@ -147,7 +148,7 @@
                 id="dptNm"
                 name="dptNm"
                 :disabled="isFieldDisabled(state, 'dptNm', disabledFields)"
-                @change="handleChangeField"
+                @input="handleChangeField"
                 @keydown="setDeptInfoTxt"
                 @blur="chkDeptData"
                 v-model="fieldValues.dptNm"
@@ -175,7 +176,7 @@
               id="telNo"
               name="telNo"
               :disabled="isFieldDisabled(state, 'telNo', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.telNo"
               class="ip2"
             />
@@ -188,7 +189,7 @@
               id="mobileNo"
               name="mobileNo"
               :disabled="isFieldDisabled(state, 'mobileNo', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.mobileNo"
               class="ip2"
             />
@@ -201,7 +202,7 @@
               id="rsofCd"
               name="rsofCd"
               :disabled="isFieldDisabled(state, 'rsofCd', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.rsofCd"
               class="ip2"
             />
@@ -214,7 +215,7 @@
               id="rsofNm"
               name="rsofNm"
               :disabled="isFieldDisabled(state, 'rsofNm', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.rsofNm"
               class="ip2"
             />
@@ -227,7 +228,7 @@
               id="plbsCd"
               name="plbsCd"
               :disabled="isFieldDisabled(state, 'plbsCd', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.plbsCd"
               class="ip2"
             />
@@ -240,7 +241,7 @@
               id="pwdChngDt"
               name="pwdChngDt"
               :disabled="true"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.pwdChngDt"
               class="ip2"
             />
@@ -269,7 +270,7 @@
               id="etcoDt"
               name="etcoDt"
               :disabled="isFieldDisabled(state, 'etcoDt', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.etcoDt"
               class="ip2"
             />
@@ -295,6 +296,7 @@
   </div>
   <DeptPopup
     v-model="deptPopup"
+    :openDeptPopup="deptPopup"
     :searchTxt="fieldValues.dptNm"
     :callbackFunc="setDeptInfo"
     :handleClose="handleDeptPopupClose"

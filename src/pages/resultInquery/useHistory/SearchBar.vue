@@ -7,7 +7,7 @@
           <input
             type="date"
             name="startDt"
-            @change="handleChangeField"
+            @input="handleChangeField"
             class="datainput"
             v-model="searchValues.startDt"
           />
@@ -15,7 +15,7 @@
           <input
             type="date"
             name="endDt"
-            @change="handleChangeField"
+            @input="handleChangeField"
             class="datainput"
             v-model="searchValues.endDt"
           />
@@ -23,21 +23,11 @@
       </li>
       <li>
         <div class="divide50"><span class="dot">⦁</span> 사용자 ID</div>
-        <input
-          type="text"
-          class="datainput"
-          name="userId"
-          @change="handleChangeField"
-        />
+        <input type="text" class="datainput" name="userId" @input="handleChangeField" />
       </li>
       <li>
         <div class="divide50"><span class="dot">⦁</span> 로그내용</div>
-        <input
-          type="text"
-          class="datainput"
-          name="useHisCntn"
-          @change="handleChangeField"
-        />
+        <input type="text" class="datainput" name="useHisCntn" @input="handleChangeField" />
       </li>
     </ul>
   </div>

@@ -18,7 +18,7 @@
                   name="chgCntn"
                   class="ip2"
                   style="height: 64px; vertical-align;: middle"
-                  @change="handleChangeField"
+                  @input="handleChangeField"
                   v-model="fieldValues.chgCntn"
                 />
               </div>

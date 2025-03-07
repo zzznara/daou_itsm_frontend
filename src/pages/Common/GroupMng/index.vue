@@ -24,7 +24,7 @@
               name="groupId"
               :disabled="isFieldDisabled(state, 'groupId', disabledFields)"
               v-model="fieldValues.groupId"
-              @change="handleChangeField"
+              @input="handleChangeField"
               class="ip2"
             />
           </div>
@@ -38,7 +38,7 @@
               name="groupNm"
               style="width: 108px"
               :disabled="isFieldDisabled(state, 'groupNm', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.groupNm"
               class="ip2"
             />
@@ -53,7 +53,7 @@
               id="groupDesc"
               name="groupDesc"
               :disabled="isFieldDisabled(state, 'groupDesc', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.groupDesc"
               class="ip2"
               style="height: 64px; vertical-align: middle"
@@ -69,7 +69,7 @@
               id="rmks"
               name="rmks"
               :disabled="isFieldDisabled(state, 'rmks', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.rmks"
               class="ip2"
               style="height: 64px; vertical-align: middle"
@@ -108,7 +108,6 @@ import { useAppStore } from "@/stores/app";
 import { storeToRefs } from "pinia";
 import SelectBox from "@/components/SelectBox/index.vue";
 import { useAxiosWithAuthorization } from "@/utils/api";
-import { fi } from "vuetify/locale";
 import { INITIAL_FIELD_RULES } from "./validateFields";
 import { swalConfirm, Toast } from "@/components/Confirm/swal";
 

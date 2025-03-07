@@ -33,7 +33,7 @@
                 class="datainput"
                 name="schGroupId"
                 style="width: 100px"
-                @change="handleGroupChangeField"
+                @input="handleGroupChangeField"
               />
             </li>
             <li style="width: 160px">
@@ -43,7 +43,7 @@
                 class="datainput"
                 name="schGroupNm"
                 style="width: 100px"
-                @change="handleGroupChangeField"
+                @input="handleGroupChangeField"
               />
             </li>
             <li style="width: auto; float: right; padding-left: 0px !important">
@@ -122,7 +122,8 @@ onMounted(async () => {
 
   auiAuthGrid.resize("100%", "100%");
   auiAuthGroupGrid.resize("100%", 300);
-  auiGroupGrid.resize("100%", 250);
+  auiGroupGrid.resize("100%", 300);
+
   auiAuthGrid.bind("cellClick", function (event) {
     searchAuthMenuList(event.item.authId);
   });

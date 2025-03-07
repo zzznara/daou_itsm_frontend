@@ -26,7 +26,7 @@
               name="authId"
               :disabled="isFieldDisabled(state, 'authId', disabledFields)"
               v-model="fieldValues.authId"
-              @change="handleChangeField"
+              @input="handleChangeField"
               class="ip2"
             />
           </div>
@@ -40,7 +40,7 @@
               name="authNm"
               style="width: 108px"
               :disabled="isFieldDisabled(state, 'authNm', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.authNm"
               class="ip2"
             />
@@ -53,7 +53,7 @@
               type="date"
               name="authVldtStrtDt"
               id="authVldtStrtDt"
-              @change="handleChangeField"
+              @input="handleChangeField"
               :disabled="isFieldDisabled(state, 'authVldtStrtDt', disabledFields)"
               v-model="fieldValues.authVldtStrtDt"
               class="ip2"
@@ -67,7 +67,7 @@
               type="date"
               name="authVldtEndDt"
               id="authVldtEndDt"
-              @change="handleChangeField"
+              @input="handleChangeField"
               :disabled="isFieldDisabled(state, 'authVldtEndDt', disabledFields)"
               v-model="fieldValues.authVldtEndDt"
               class="ip2"
@@ -98,10 +98,10 @@
               id="authDesc"
               name="authDesc"
               :disabled="isFieldDisabled(state, 'authDesc', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.authDesc"
               class="ip2"
-              style="height: 64px; vertical-align: middle"
+              style="height: 64px; vertical-align: middle; resize: none"
             />
           </div>
         </li>
@@ -114,10 +114,10 @@
               id="rmks"
               name="rmks"
               :disabled="isFieldDisabled(state, 'rmks', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.rmks"
               class="ip2"
-              style="height: 64px; vertical-align: middle"
+              style="height: 64px; vertical-align: middle; resize: none"
             />
           </div>
         </li>

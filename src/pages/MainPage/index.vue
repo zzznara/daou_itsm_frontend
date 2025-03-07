@@ -19,7 +19,7 @@
       </h2>
     </div>
   </div>
-  <SearchBar :setSearchParameters="setSearchParameters" :systemCd="userInfo.systemCd" />
+  <SearchBar :setSearchParameters="setSearchParameters" />
 
   <div class="grid_wrap" style="height: calc(100dvh - 800px) !important">
     <AUIGrid ref="myGrid" :columnLayout="columnLayout" :gridProps="defaultGridProps" />
@@ -191,6 +191,7 @@ const handleMasterDelete = () => {
   // const auiGrid = myGrid.current;
   // auiGrid.removeRow("selectedIndex");
 };
+
 const handleMasterSave = async () => {
   // if (
   //   await ModalConfirm({

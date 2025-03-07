@@ -38,7 +38,7 @@
                 class="datainput"
                 name="schUserId"
                 style="width: 100px"
-                @change="handleUserChangeField"
+                @input="handleUserChangeField"
                 v-model="userFieldValues.schUserId"
               />
             </li>
@@ -49,7 +49,7 @@
                 class="datainput"
                 name="schUserNmKor"
                 style="width: 100px"
-                @change="handleUserChangeField"
+                @input="handleUserChangeField"
                 v-model="userFieldValues.schUserNmKor"
               />
             </li>

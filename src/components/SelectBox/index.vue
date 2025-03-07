@@ -1,6 +1,6 @@
 <template>
   <select
-    @change="props.onChange"
+    @input="props.onChange"
     :name="props.name"
     v-model="props.value"
     :disabled="props.disabled"

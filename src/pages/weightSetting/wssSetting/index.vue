@@ -1,4 +1,3 @@
-b
 <template>
   <ButtonBar :menuInfo="menuInfo" />
   <div class="flexible_contents_box2" style="max-width: 900px">
@@ -8,49 +7,37 @@ b
           <h5>계근대 공통설정</h5>
           <ul class="t_form">
             <li>
-              <div class="title" style="width: 40%; text-align: left">
-                5분 이내 재계근 방지
-              </div>
+              <div class="title" style="width: 40%; text-align: left">5분 이내 재계근 방지</div>
               <div class="formbox" style="text-align: center; width: 60%">
                 <component :is="buttonOnOffShow('fiveMinInSkip')" />
               </div>
             </li>
             <li>
-              <div class="title" style="width: 40%; text-align: left">
-                중복계근 방지
-              </div>
+              <div class="title" style="width: 40%; text-align: left">중복계근 방지</div>
               <div class="formbox" style="text-align: center; width: 60%">
                 <component :is="buttonOnOffShow('dupSkip')" />
               </div>
             </li>
             <li>
-              <div class="title" style="width: 40%; text-align: left">
-                입고일-출하일 제한
-              </div>
+              <div class="title" style="width: 40%; text-align: left">입고일-출하일 제한</div>
               <div class="formbox" style="text-align: center; width: 60%">
                 <component :is="buttonOnOffShow('limitDtApply')" />
               </div>
             </li>
             <li>
-              <div class="title" style="width: 40%; text-align: left">
-                철근출하 허용오차 적용
-              </div>
+              <div class="title" style="width: 40%; text-align: left">철근출하 허용오차 적용</div>
               <div class="formbox" style="text-align: center; width: 60%">
                 <component :is="buttonOnOffShow('rebarMarginApply')" />
               </div>
             </li>
             <li>
-              <div class="title" style="width: 40%; text-align: left">
-                빌렛 허용오차 적용
-              </div>
+              <div class="title" style="width: 40%; text-align: left">빌렛 허용오차 적용</div>
               <div class="formbox" style="text-align: center; width: 60%">
                 <component :is="buttonOnOffShow('billetMarginApply')" />
               </div>
             </li>
             <li>
-              <div class="title" style="width: 40%; text-align: left">
-                계근대 방향설정 적용
-              </div>
+              <div class="title" style="width: 40%; text-align: left">계근대 방향설정 적용</div>
               <div class="formbox" style="text-align: center; width: 60%">
                 <component :is="buttonOnOffShow('limitDirectionApply')" />
               </div>
@@ -60,19 +47,13 @@ b
         <div class="subdatabox" style="margin-top: 30px">
           <div style="display: flex; align-items: center">
             <h5>계근대 전체 철근출하 허용오차 설정</h5>
-            <button
-              class="btn_greystyle save"
-              style="margin-left: 20px"
-              @click="saveRebarSetting"
-            >
+            <button class="btn_greystyle save" style="margin-left: 20px" @click="saveRebarSetting">
               저장
             </button>
           </div>
           <ul class="t_form">
             <li>
-              <div class="title" style="width: 40%; text-align: left">
-                D10, D13
-              </div>
+              <div class="title" style="width: 40%; text-align: left">D10, D13</div>
               <div class="formbox" style="text-align: center; width: 60%">
                 상한
                 <input
@@ -81,7 +62,7 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="rebar1013MaxPercent"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                 />
                 %<span style="margin: 0px 5px"> / </span>
                 하한
@@ -90,16 +71,14 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="rebar1013MinPercent"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.rebar1013MinPercent"
                 />
                 %
               </div>
             </li>
             <li>
-              <div class="title" style="width: 40%; text-align: left">
-                D16, D19, D22, D25
-              </div>
+              <div class="title" style="width: 40%; text-align: left">D16, D19, D22, D25</div>
               <div class="formbox" style="text-align: center; width: 60%">
                 상한
                 <input
@@ -107,7 +86,7 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="rebar1625MaxPercent"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.rebar1625MaxPercent"
                 />
                 %<span style="margin: 0px 5px"> / </span>
@@ -117,16 +96,14 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="rebar1625MinPercent"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.rebar1625MinPercent"
                 />
                 %
               </div>
             </li>
             <li>
-              <div class="title" style="width: 40%; text-align: left">
-                D29, D32
-              </div>
+              <div class="title" style="width: 40%; text-align: left">D29, D32</div>
               <div class="formbox" style="text-align: center; width: 60%">
                 상한
                 <input
@@ -134,7 +111,7 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="rebar2932MaxPercent"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.rebar2932MaxPercent"
                 />
                 %<span style="margin: 0px 5px"> / </span>
@@ -144,16 +121,14 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="rebar2932MinPercent"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.rebar2932MinPercent"
                 />
                 %
               </div>
             </li>
             <li>
-              <div class="title" style="width: 40%; text-align: left">
-                승강기 레일
-              </div>
+              <div class="title" style="width: 40%; text-align: left">승강기 레일</div>
               <div class="formbox" style="text-align: center; width: 60%">
                 상한
                 <input
@@ -161,7 +136,7 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="rebarRailMaxPercent"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.rebarRailMaxPercent"
                 />
                 %<span style="margin: 0px 5px"> / </span>
@@ -171,16 +146,14 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="rebarRailMinPercent"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.rebarRailMinPercent"
                 />
                 %
               </div>
             </li>
             <li>
-              <div class="title" style="width: 40%; text-align: left">
-                그 외
-              </div>
+              <div class="title" style="width: 40%; text-align: left">그 외</div>
               <div class="formbox" style="text-align: center; width: 60%">
                 상한
                 <input
@@ -188,7 +161,7 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="rebarEtcMaxPercent"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.rebarEtcMaxPercent"
                 />
                 %<span style="margin: 0px 5px"> / </span>
@@ -198,7 +171,7 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="rebarEtcMinPercent"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.rebarEtcMinPercent"
                 />
                 %
@@ -216,11 +189,7 @@ b
             <li>
               <div
                 class="title"
-                style="
-                  text-align: center;
-                  width: 40%;
-                  border-right: 1px solid #d0d6db;
-                "
+                style="text-align: center; width: 40%; border-right: 1px solid #d0d6db"
               ></div>
               <div
                 class="title"
@@ -236,27 +205,16 @@ b
               </div>
               <div
                 class="title"
-                style="
-                  width: 30%;
-                  text-align: center;
-                  border-right: 0;
-                  min-width: 100px;
-                "
+                style="width: 30%; text-align: center; border-right: 0; min-width: 100px"
               >
                 출차 방향 설정
               </div>
             </li>
             <li>
-              <div class="title" style="text-align: left; width: 40%">
-                1계근대 - 입차
-              </div>
+              <div class="title" style="text-align: left; width: 40%">1계근대 - 입차</div>
               <div
                 class="formbox"
-                style="
-                  text-align: center;
-                  width: 30%;
-                  border-right: 1px solid #d0d6db;
-                "
+                style="text-align: center; width: 30%; border-right: 1px solid #d0d6db"
               >
                 <component :is="buttonOnOffShow('wbrg14001010In')" />
               </div>
@@ -265,16 +223,10 @@ b
               </div>
             </li>
             <li>
-              <div class="title" style="text-align: left; width: 40%">
-                1계근대 - 출차
-              </div>
+              <div class="title" style="text-align: left; width: 40%">1계근대 - 출차</div>
               <div
                 class="formbox"
-                style="
-                  text-align: center;
-                  width: 30%;
-                  border-right: 1px solid #d0d6db;
-                "
+                style="text-align: center; width: 30%; border-right: 1px solid #d0d6db"
               >
                 <component :is="buttonOnOffShow('wbrg14001020In')" />
               </div>
@@ -283,16 +235,10 @@ b
               </div>
             </li>
             <li>
-              <div class="title" style="text-align: left; width: 40%">
-                2계근대 - 입차
-              </div>
+              <div class="title" style="text-align: left; width: 40%">2계근대 - 입차</div>
               <div
                 class="formbox"
-                style="
-                  text-align: center;
-                  width: 30%;
-                  border-right: 1px solid #d0d6db;
-                "
+                style="text-align: center; width: 30%; border-right: 1px solid #d0d6db"
               >
                 <component :is="buttonOnOffShow('wbrg14002010In')" />
               </div>
@@ -301,16 +247,10 @@ b
               </div>
             </li>
             <li>
-              <div class="title" style="text-align: left; width: 40%">
-                2계근대 - 출차
-              </div>
+              <div class="title" style="text-align: left; width: 40%">2계근대 - 출차</div>
               <div
                 class="formbox"
-                style="
-                  text-align: center;
-                  width: 30%;
-                  border-right: 1px solid #d0d6db;
-                "
+                style="text-align: center; width: 30%; border-right: 1px solid #d0d6db"
               >
                 <component :is="buttonOnOffShow('wbrg14002020In')" />
               </div>
@@ -323,19 +263,13 @@ b
         <div class="subdatabox" style="margin-top: 70px">
           <div style="display: flex; align-items: center">
             <h5>계근대별 빌렛 허용오차 설정</h5>
-            <button
-              class="btn_greystyle save"
-              style="margin-left: 20px"
-              @click="saveBilletSetting"
-            >
+            <button class="btn_greystyle save" style="margin-left: 20px" @click="saveBilletSetting">
               저장
             </button>
           </div>
           <ul class="t_form">
             <li>
-              <div class="title" style="width: 40%; text-align: left">
-                1계근대 - 입차
-              </div>
+              <div class="title" style="width: 40%; text-align: left">1계근대 - 입차</div>
               <div class="formbox" style="text-align: center; width: 65%">
                 상한
                 <input
@@ -343,7 +277,7 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="billet14001010MaxKg"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.billet14001010MaxKg"
                 />
                 kg
@@ -354,16 +288,14 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="billet14001010MinKg"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.billet14001010MinKg"
                 />
                 kg
               </div>
             </li>
             <li>
-              <div class="title" style="width: 40%; text-align: left">
-                1계근대 - 출차
-              </div>
+              <div class="title" style="width: 40%; text-align: left">1계근대 - 출차</div>
               <div class="formbox" style="text-align: center; width: 65%">
                 상한
                 <input
@@ -371,7 +303,7 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="billet14001020MaxKg"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.billet14001020MaxKg"
                 />
                 kg
@@ -382,16 +314,14 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="billet14001020MinKg"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.billet14001020MinKg"
                 />
                 kg
               </div>
             </li>
             <li>
-              <div class="title" style="width: 40%; text-align: left">
-                2계근대 - 입차
-              </div>
+              <div class="title" style="width: 40%; text-align: left">2계근대 - 입차</div>
               <div class="formbox" style="text-align: center; width: 65%">
                 상한
                 <input
@@ -399,7 +329,7 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="billet14002010MaxKg"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.billet14002010MaxKg"
                 />
                 kg
@@ -410,16 +340,14 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="billet14002010MinKg"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.billet14002010MinKg"
                 />
                 kg
               </div>
             </li>
             <li>
-              <div class="title" style="width: 40%; text-align: left">
-                2계근대 - 출차
-              </div>
+              <div class="title" style="width: 40%; text-align: left">2계근대 - 출차</div>
               <div class="formbox" style="text-align: center; width: 65%">
                 상한
                 <input
@@ -427,7 +355,7 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="billet14002020MaxKg"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.billet14002020MaxKg"
                 />
                 kg
@@ -438,7 +366,7 @@ b
                   class="ip2"
                   style="width: 55px; margin: 0px 5px"
                   name="billet14002020MinKg"
-                  @change="setChangeVal"
+                  @input="setChangeVal"
                   v-model="fieldValues.billet14002020MinKg"
                 />
                 kg
@@ -511,10 +439,8 @@ const fieldValues = ref({
   billet14002020MinKg: "", //빌렛 허용오차 하한 KG - 후문 2계근대 출차
 });
 
-const SEARCH_COMMON_SETTING_URL =
-  "/weightsetting/wssSetting/SearchCommonSettings";
-const SEARCH_DIRECTION_SETTING_URL =
-  "/weightsetting/wssSetting/SearchWeighbridgeDirections";
+const SEARCH_COMMON_SETTING_URL = "/weightsetting/wssSetting/SearchCommonSettings";
+const SEARCH_DIRECTION_SETTING_URL = "/weightsetting/wssSetting/SearchWeighbridgeDirections";
 const SEARCH_ERR_RANGE_SETTING_URL =
   "/weightsetting/wssSetting/SearchWeightBrigdeAllowErrRangeSettings";
 const SEARCH_BILLET_ERR_RANGE_SETTING_URL =
@@ -522,8 +448,7 @@ const SEARCH_BILLET_ERR_RANGE_SETTING_URL =
 //
 const SAVE_SINGLE_SETTING_URL = "/weightsetting/wssSetting/saveSingleSetting";
 const SAVE_COMMON_SETTING_URL = "/weightsetting/wssSetting/saveCommonSettings";
-const SAVE_DIRECTION_SETTING_URL =
-  "/weightsetting/wssSetting/saveWeighbridgeDirections";
+const SAVE_DIRECTION_SETTING_URL = "/weightsetting/wssSetting/saveWeighbridgeDirections";
 const SAVE_REBAR_ERR_RANGE_SETTING_URL =
   "/weightsetting/wssSetting/saveWeightBrigdeAllowErrRangeSettings";
 const SAVE_BILLET_ERR_RANGE_SETTING_URL =

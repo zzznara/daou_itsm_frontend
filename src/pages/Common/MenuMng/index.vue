@@ -35,7 +35,7 @@
                 name="menuId"
                 class="ip2"
                 :disabled="isFieldDisabled(state, 'menuId', disabledFields)"
-                @change="handleChangeField"
+                @input="handleChangeField"
               />
             </div></li
         ></v-col>
@@ -49,7 +49,7 @@
                 name="menuId"
                 class="ip2"
                 :disabled="isFieldDisabled(state, 'menuId', disabledFields)"
-                @change="handleChangeField"
+                @input="handleChangeField"
               />
             </div>
           </li>
@@ -64,7 +64,7 @@
                 name="menuId"
                 class="ip2"
                 :disabled="isFieldDisabled(state, 'menuId', disabledFields)"
-                @change="handleChangeField"
+                @input="handleChangeField"
               />
             </div></li
         ></v-col>
@@ -78,7 +78,7 @@
                 name="menuId"
                 class="ip2"
                 :disabled="isFieldDisabled(state, 'menuId', disabledFields)"
-                @change="handleChangeField"
+                @input="handleChangeField"
               />
             </div>
           </li>
@@ -94,7 +94,7 @@
               name="menuId"
               class="ip2"
               :disabled="isFieldDisabled(state, 'menuId', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
             />
           </div>
         </li>
@@ -107,7 +107,7 @@
               name="menuNmKor"
               class="ip2"
               :disabled="isFieldDisabled(state, 'menuNmKor', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
             />
           </div>
         </li>
@@ -120,7 +120,7 @@
               name="menuNmEng"
               class="ip2"
               :disabled="isFieldDisabled(state, 'menuNmEng', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
             />
           </div>
         </li>
@@ -133,7 +133,7 @@
               name="menuUrl"
               class="ip2"
               :disabled="isFieldDisabled(state, 'menuUrl', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
             />
           </div>
         </li>
@@ -146,7 +146,7 @@
               name="upperMenuId"
               class="ip2"
               :disabled="isFieldDisabled(state, 'upperMenuId', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
             />
           </div>
         </li>
@@ -159,7 +159,7 @@
               name="menuLvl"
               class="ip1"
               :disabled="isFieldDisabled(state, 'menuLvl', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
             >
               <option>1</option>
               <option>2</option>
@@ -180,7 +180,7 @@
               max="100"
               type="number"
               :disabled="isFieldDisabled(state, 'sortSeq', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
             />
             <!-- <input
               type="number"
@@ -188,7 +188,7 @@
               max="100"
               name="sortSeq"
               id="sortSeq"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.sortSeq"
               class="ip1"
             /> -->
@@ -215,11 +215,12 @@
             <textarea
               v-model="fieldValues.menuDesc"
               rows="1"
+              id="menuDesc"
               name="menuDesc"
               class="ip2"
               :disabled="isFieldDisabled(state, 'menuDesc', disabledFields)"
-              style="height: 64px; vertical-align: middle"
-              @change="handleChangeField"
+              style="height: 64px; vertical-align: middle; resize: none"
+              @input="handleChangeField"
             />
           </div>
         </li>

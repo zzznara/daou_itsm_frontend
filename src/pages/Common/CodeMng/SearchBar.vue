@@ -8,7 +8,7 @@
           class="datainput"
           name="mastCd"
           v-model="INITIAL_SEARCH_FIELDS.mastCd"
-          @change="handleChangeField"
+          @input="handleChangeField"
         />
       </li>
       <li>
@@ -18,7 +18,7 @@
           class="datainput"
           name="cdNmKor"
           v-model="INITIAL_SEARCH_FIELDS.cdNmKor"
-          @change="handleChangeField"
+          @input="handleChangeField"
         />
       </li>
     </ul>

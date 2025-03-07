@@ -26,7 +26,7 @@
                 type="password"
                 name="password"
                 class="fill"
-                @change="handleChangeField"
+                @input="handleChangeField"
                 v-model="password"
                 style="border: 1px solid black; border-radius: 3px"
               />

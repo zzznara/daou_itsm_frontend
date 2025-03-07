@@ -3,7 +3,7 @@
     <ul>
       <li>
         <div class="divide50"><span color="grey">⦁</span> 입차예정일</div>
-        <input type="date" name="dt" class="datainput" @change="handleChangeField" />
+        <input type="date" name="dt" class="datainput" @input="handleChangeField" />
       </li>
       <li>
         <div class="divide50"><span color="grey">⦁</span> 국내/수입</div>
@@ -14,7 +14,7 @@
           name="category"
           topSelected="전체"
           class="datainput"
-          @change="handleChangeField"
+          @input="handleChangeField"
         />
       </li>
       <li>
@@ -27,7 +27,7 @@
               name="custNm"
               :disabled="false"
               class="ip1"
-              @change="handleChangeField"
+              @input="handleChangeField"
               @keydown="setCustTxt"
             />
           </div>
@@ -44,7 +44,7 @@
               type="text"
               name="prodNm"
               :disabled="false"
-              @change="handleChangeField"
+              @input="handleChangeField"
               class="ip1"
               v-model="searchValues.prodNm"
               @keydown="setItemTxt"
@@ -62,12 +62,12 @@
           name="status"
           topSelected="전체"
           class="datainput"
-          @change="handleChangeField"
+          @input="handleChangeField"
         />
       </li>
       <li>
         <div class="divide50"><span color="grey">⦁</span> 차량번호</div>
-        <input type="text" class="datainput" name="carNo" @change="handleChangeField" />
+        <input type="text" class="datainput" name="carNo" @input="handleChangeField" />
       </li>
       <li>
         <div class="divide50"><span color="grey">⦁</span> 등록구분</div>
@@ -77,7 +77,7 @@
           attr10="Y"
           topSelected="전체"
           class="datainput"
-          @change="handleChangeField"
+          @input="handleChangeField"
         />
       </li>
     </ul>

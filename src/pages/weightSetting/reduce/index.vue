@@ -27,7 +27,7 @@
               name="reduceCd"
               :disabled="isFieldDisabled(state, 'reduceCd', disabledFields)"
               v-model="fieldValues.reduceCd"
-              @change="handleChangeField"
+              @input="handleChangeField"
               class="ip2"
             />
           </div>
@@ -39,7 +39,7 @@
               type="text"
               name="reduceDesc"
               :disabled="isFieldDisabled(state, 'reduceDesc', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.reduceDesc"
               class="ip2"
             />
@@ -52,7 +52,7 @@
               type="text"
               name="unitWeight"
               :disabled="isFieldDisabled(state, 'unitWeight', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.unitWeight"
               class="ip2"
             />
@@ -69,7 +69,7 @@
                   isFieldDisabled(state, 'prodNm', disabledFields, fieldValues.isForceDisable)
                 "
                 v-model="fieldValues.prodNm"
-                @change="handleChangeField"
+                @input="handleChangeField"
                 @keydown="setItemTxt"
                 @blur="chkItemData"
                 class="ip1"
@@ -101,7 +101,7 @@
                 name="custNm"
                 :disabled="true"
                 v-model="fieldValues.custNm"
-                @change="handleChangeField"
+                @input="handleChangeField"
                 class="ip1"
               />
             </div>

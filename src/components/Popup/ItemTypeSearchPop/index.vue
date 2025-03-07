@@ -15,7 +15,7 @@
                     type="text"
                     name="searchTxt"
                     disabled="false"
-                    @change="handleChangeField"
+                    @input="handleChangeField"
                     class="ip1"
                     v-model="INITIAL_SEARCH_FIELDS.searchTxt"
                   />

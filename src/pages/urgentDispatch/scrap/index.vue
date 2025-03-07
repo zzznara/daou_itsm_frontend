@@ -22,7 +22,7 @@
             <input
               type="date"
               name="dt"
-              @change="handleChangeField"
+              @input="handleChangeField"
               :disabled="isFieldDisabled(state, 'dt', disabledFields, fieldValues.isForceDisable)"
               value="fieldValues.dt"
               class="ip2"
@@ -40,7 +40,7 @@
               :disabled="
                 isFieldDisabled(state, 'category', disabledFields, fieldValues.isForceDisable)
               "
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.category"
               class="ip2"
             />
@@ -60,7 +60,7 @@
                   isFieldDisabled(state, 'custNm', disabledFields, fieldValues.isForceDisable)
                 "
                 v-model="fieldValues.custNm"
-                @change="handleChangeField"
+                @input="handleChangeField"
                 @keypress="setCustTxt"
                 @blur="chkCustData"
                 class="ip1"
@@ -89,7 +89,7 @@
                 name="prodCd1"
                 :disabled="true"
                 v-model="fieldValues.prodCd1"
-                @change="handleChangeField"
+                @input="handleChangeField"
                 class="ip1"
               />
             </div>
@@ -99,7 +99,7 @@
                 :disabled="
                   isFieldDisabled(state, 'prodNm', disabledFields, fieldValues.isForceDisable)
                 "
-                @change="handleChangeField"
+                @input="handleChangeField"
                 @keypress="setItemTxt"
                 @blur="chkItemData"
                 v-model="fieldValues.prodNm"
@@ -132,7 +132,7 @@
                 :disabled="
                   isFieldDisabled(state, 'carNo', disabledFields, fieldValues.isForceDisable)
                 "
-                @change="handleChangeField"
+                @input="handleChangeField"
                 @keypress="setCarNoTxt"
                 @blur="chkCarNoData"
               />
@@ -157,7 +157,7 @@
             <input
               name="drvNm"
               :disabled="true"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.drvNm"
               class="ip2"
             />
@@ -169,7 +169,7 @@
             <input
               name="drvTel"
               :disabled="true"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.drvTel"
               class="ip2"
             />
@@ -188,7 +188,7 @@
                 isFieldDisabled(state, 'carType', disabledFields, fieldValues.isForceDisable)
               "
               class="ip2"
-              @change="handleChangeField"
+              @input="handleChangeField"
             />
           </div>
         </li>
@@ -207,7 +207,7 @@
                 name="areaCd"
                 :disabled="true"
                 class="ip1"
-                @change="handleChangeField"
+                @input="handleChangeField"
               />
             </div>
             <div>
@@ -216,7 +216,7 @@
                 :disabled="
                   isFieldDisabled(state, 'areaNm', disabledFields, fieldValues.isForceDisable)
                 "
-                @change="handleChangeField"
+                @input="handleChangeField"
                 @keypress="setAreaTxt"
                 @blur="chkAreaData"
                 v-model="fieldValues.areaNm"
@@ -251,7 +251,7 @@
                 name="vendorCd"
                 :disabled="true"
                 v-model="fieldValues.vendorCd"
-                @change="handleChangeField"
+                @input="handleChangeField"
                 class="ip1"
               />
             </div>
@@ -261,7 +261,7 @@
                 :disabled="
                   isFieldDisabled(state, 'vendorNm', disabledFields, fieldValues.isForceDisable)
                 "
-                @change="handleChangeField"
+                @input="handleChangeField"
                 @keypress="setVendorTxt"
                 @blur="chkVendorData"
                 v-model="fieldValues.vendorNm"
@@ -298,7 +298,7 @@
               :disabled="
                 isFieldDisabled(state, 'gradeNm', disabledFields, fieldValues.isForceDisable)
               "
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.gradeNm"
               class="ip2"
             />
@@ -317,7 +317,7 @@
               :disabled="
                 isFieldDisabled(state, 'cotNum', disabledFields, fieldValues.isForceDisable)
               "
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.cotNum"
               class="ip2"
             />
@@ -332,7 +332,7 @@
               rows="1"
               type="text"
               :disabled="isFieldDisabled(state, 'bigo', disabledFields, fieldValues.isForceDisable)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.bigo"
               class="ip2"
               style="height: 66px; vertical-align: middle"

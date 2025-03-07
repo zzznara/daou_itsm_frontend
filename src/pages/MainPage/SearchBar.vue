@@ -22,7 +22,7 @@
               type="text"
               name="custNm"
               class="ip1"
-              @change="handleChangeField"
+              @input="handleChangeField"
               @keydown="setCustTxt"
             />
           </div>
@@ -40,7 +40,7 @@
               type="text"
               name="prodNm"
               class="ip1"
-              @change="handleChangeField"
+              @input="handleChangeField"
               @keydown="setItemTxt"
             />
           </div>
@@ -51,7 +51,7 @@
       </li>
       <li>
         <div class="divide50"><span class="dot">⦁</span> 차량번호</div>
-        <input type="text" name="carNo" class="datainput" @change="handleChangeField" />
+        <input type="text" name="carNo" class="datainput" @input="handleChangeField" />
       </li>
       <li class="date">
         <div class="divide50"><span class="dot">⦁</span> 계량일자</div>
@@ -59,7 +59,7 @@
           <input
             type="date"
             name="startDt"
-            @change="handleChangeField"
+            @input="handleChangeField"
             class="datainput"
             v-model="searchValues.startDt"
           />
@@ -67,7 +67,7 @@
           <input
             type="date"
             name="endDt"
-            @change="handleChangeField"
+            @input="handleChangeField"
             class="datainput"
             v-model="searchValues.endDt"
           />

@@ -3,12 +3,7 @@
     <ul>
       <li>
         <div class="divide50"><span class="dot">⦁</span> 입차예정일</div>
-        <input
-          type="date"
-          name="dt"
-          @change="handleChangeField"
-          class="datainput"
-        />
+        <input type="date" name="dt" @input="handleChangeField" class="datainput" />
       </li>
       <li>
         <div class="divide50"><span class="dot">⦁</span> 매입/매출</div>
@@ -16,7 +11,7 @@
           mastCd="BIZ_TYPE"
           name="ioGb"
           topSelected="전체"
-          @change="handleChangeField"
+          @input="handleChangeField"
           class="datainput"
           v-model="searchValues.ioGb"
         />
@@ -29,27 +24,20 @@
               type="text"
               name="prodNm"
               disabled="false"
-              @change="handleChangeField"
+              @input="handleChangeField"
               @keydown="setItemTxt"
               class="ip1"
               v-model="searchValues.prodNm"
             />
           </div>
           <div>
-            <button type="button" @click="handleSearchItem" class="btn_ip">
-              검색
-            </button>
+            <button type="button" @click="handleSearchItem" class="btn_ip">검색</button>
           </div>
         </div>
       </li>
       <li>
         <div class="divide50"><span class="dot">⦁</span> 차량번호</div>
-        <input
-          type="text"
-          class="datainput"
-          name="carNo"
-          @change="handleChangeField"
-        />
+        <input type="text" class="datainput" name="carNo" @input="handleChangeField" />
       </li>
       <li>
         <div class="divide50"><span class="dot">⦁</span> 상태</div>
@@ -57,7 +45,7 @@
           mastCd="TRANS_STATUS_CD"
           name="status"
           topSelected="전체"
-          @change="handleChangeField"
+          @input="handleChangeField"
           class="datainput"
         />
       </li>
@@ -68,7 +56,7 @@
           name="saveGB"
           attr10="Y"
           topSelected="전체"
-          @change="handleChangeField"
+          @input="handleChangeField"
           class="datainput"
         />
       </li>

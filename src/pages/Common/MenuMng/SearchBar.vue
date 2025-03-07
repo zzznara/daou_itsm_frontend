@@ -7,7 +7,7 @@
           type="text"
           class="datainput"
           name="menuId"
-          @change="handleChangeField"
+          @input="handleChangeField"
           v-model="initFields.menuId"
         />
       </li>
@@ -17,7 +17,7 @@
           type="text"
           class="datainput"
           name="menuNmKor"
-          @change="handleChangeField"
+          @input="handleChangeField"
           v-model="initFields.menuNmKor"
         />
       </li>

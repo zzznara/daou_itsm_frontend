@@ -28,7 +28,7 @@
                 name="carNo"
                 :disabled="true"
                 v-model="fieldValues.carNo"
-                @change="handleChangeField"
+                @input="handleChangeField"
                 class="ip2"
               />
             </div>
@@ -58,7 +58,7 @@
                 name="custNm"
                 :disabled="true"
                 v-model="fieldValues.custNm"
-                @change="handleChangeField"
+                @input="handleChangeField"
                 class="ip1"
               />
             </div>
@@ -72,7 +72,7 @@
               name="wbrdgCd"
               topSelected="선택"
               :disabled="isFieldDisabled(state, 'wbrdgCd', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.wbrdgCd"
               class="ip1"
             />
@@ -86,7 +86,7 @@
               name="wbrdgCd2"
               topSelected="선택"
               :disabled="isFieldDisabled(state, 'wbrdgCd2', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.wbrdgCd2"
               class="ip1"
             />
@@ -100,7 +100,7 @@
               name="appWeighUseYn"
               topSelected="선택"
               :disabled="isFieldDisabled(state, 'appWeighUseYn', disabledFields)"
-              @change="handleChangeField"
+              @input="handleChangeField"
               v-model="fieldValues.appWeighUseYn"
               class="ip1"
             />

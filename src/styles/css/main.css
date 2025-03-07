@@ -158,7 +158,7 @@ ul li img {
     border-radius: 3px;
     border: 1px solid #bbbbbb;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     color: #585858;
     padding-left: 11.5px;
@@ -199,7 +199,7 @@ ul li img {
 .divide50 {
     width: 125px;
     overflow: hidden;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     color: #333333;
 }
@@ -209,7 +209,7 @@ ul li img {
 }
 .displays {
     display: inline-block !important;
-    font-size: 12px !important;
+    font-size: 14px !important;
 }
 
 .displays .dot {
@@ -219,9 +219,18 @@ ul li img {
 .flex50 {
     display: flex;
     width: 336px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     color: #585858;
+}
+.updown0 {
+    padding: 0;
+    margin-left: 2px;
+    height: 30px;
+    width: 56px;
+    font-size: 13px;
+    box-sizing: border-box;
+    display: inline-block;
 }
 @media (max-width: 771px) {
     .searchdata {
@@ -264,11 +273,6 @@ ul li img {
         width: 70%;
         right: 12px;
     }
-}
-
-.v-data-table__th {
-    background-color: #406e8f !important;
-    color: white;
 }
 
 /*ㅁㅁ관리,버튼영역 m크기에서 flex>block전환*/
@@ -412,7 +416,6 @@ ul li img {
     transform: translateY(-4px);
 }
 .menulogo span.logo {
-    /* font-size: 23px !important; */
     font-size: 23px !important;
     font-weight: 700 !important;
     letter-spacing: -1px !important;
@@ -885,6 +888,12 @@ ul li img {
 .formbox input:disabled {
     background: #f5f5f5;
 }
+.formbox textarea:disabled {
+    background: #f5f5f5;
+}
+.formbox select:disabled {
+    background: #f5f5f5;
+}
 .formbox.left {
     border-right: 1px solid #d0d6db;
 }
@@ -919,6 +928,9 @@ ul li img {
 }
 .ip_sup2 div:last-child {
     padding-right: 0;
+}
+.ip_sup2 input:disabled {
+    background: #f5f5f5;
 }
 .v-card-text {
     flex: 1 1 auto;
@@ -1483,6 +1495,99 @@ ul li img {
 .btn_turnoff > img {
     vertical-align: middle;
 }
+
+/*table*/
+.t_greyth {
+    border-collapse: collapse;
+    border-top: 1px solid #c5c5c5;
+    width: 100%;
+    table-layout: fixed;
+    font-size: 16px;
+    color: #515863;
+}
+.t_greyth tr:first-child {
+    height: 50px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #dcdcdc;
+}
+.t_greyth tr {
+    height: 40px;
+    border-bottom: 1px solid #dbe2ee;
+    text-align: center;
+}
+.t_greyth tr th {
+    font-weight: 700;
+}
+.t_greyth tr th:first-child {
+    width: 10%;
+}
+.t_greyth tr th:nth-child(2) {
+    width: 40%;
+    text-align: left;
+}
+.t_greyth tr th:nth-child(3) {
+    width: 15%;
+}
+.t_greyth tr th:last-child {
+    width: 20%;
+}
+.t_greyth tr td {
+    font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.t_greyth tr:hover:not(:first-child) {
+    background-color: #fff6e8;
+}
+.t_slider {
+    height: 40px;
+    border-bottom: 1px solid #dbe2ee;
+    text-align: center;
+}
+.t_slider td:nth-child(2) {
+    text-align: left;
+}
+.checker {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+/*table*/
+.t_garo {
+    border-collapse: collapse;
+    color: #515863;
+    font-size: 16px;
+    border-top: 1px solid #c5c5c5;
+    width: 100%;
+    table-layout: fixed;
+}
+.t_garo tr {
+    height: 40px;
+    border-bottom: 1px solid #dbe2ee;
+}
+.t_garo th {
+    background-color: #f8f8f8;
+    width: 130.5px;
+}
+.t_garo td {
+    font-weight: 700;
+    text-align: left;
+    padding-left: 15.5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.red {
+    color: red;
+}
+
+.t_div {
+    display: inline-block;
+    width: 25%;
+    min-width: 300px;
+}
+
 /* 
 .msg_modal .modal-header {
     display: block;
@@ -1529,6 +1634,12 @@ ul li img {
     display: flex;
     align-items: start;
     justify-content: center;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+    flex-shrink: 0;
+    padding: 1rem;
+    min-height: 550px;
 }
 .commonDialog .dialogFooter {
     border: none;
@@ -1548,6 +1659,14 @@ ul li img {
     font-size: 18px;
 }
 
+@media (min-width: 500px) {
+    .h4,
+    h4 {
+        font-size: 24px;
+        color: #44403d;
+        font-weight: 700;
+    }
+}
 .modal-body {
     flex: 1 1 auto;
     padding: 0.75rem;

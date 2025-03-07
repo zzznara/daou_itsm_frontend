@@ -7,7 +7,7 @@
           type="text"
           class="datainput"
           name="schGroupNm"
-          @change="handleChangeField"
+          @input="handleChangeField"
           v-model="initFields.schGroupNm"
         />
       </li>

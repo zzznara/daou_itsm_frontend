@@ -7,7 +7,7 @@
           type="text"
           class="datainput"
           name="schAuthId"
-          @change="handleChangeField"
+          @input="handleChangeField"
           v-model="initFields.schAuthId"
         />
       </li>
@@ -17,7 +17,7 @@
           type="text"
           class="datainput"
           name="schAuthNm"
-          @change="handleChangeField"
+          @input="handleChangeField"
           v-model="initFields.schAuthNm"
         />
       </li>

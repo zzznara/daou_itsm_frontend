@@ -6,19 +6,14 @@
         <input
           type="date"
           name="dt"
-          @change="handleChangeField"
+          @input="handleChangeField"
           class="datainput"
           v-model="searchValues.dt"
         />
       </li>
       <li>
         <div class="divide50"><span class="dot">⦁</span> 차량번호</div>
-        <input
-          type="text"
-          class="datainput"
-          name="carNo"
-          @change="handleChangeField"
-        />
+        <input type="text" class="datainput" name="carNo" @input="handleChangeField" />
       </li>
     </ul>
   </div>

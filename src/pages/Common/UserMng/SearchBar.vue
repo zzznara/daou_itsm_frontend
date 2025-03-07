@@ -7,7 +7,7 @@
           type="text"
           class="datainput"
           name="userId"
-          @change="handleChangeField"
+          @input="handleChangeField"
           v-model="INITIAL_SEARCH_FIELDS.userId"
         />
       </li>
@@ -17,7 +17,7 @@
           type="text"
           class="datainput"
           name="nmKor"
-          @change="handleChangeField"
+          @input="handleChangeField"
           v-model="INITIAL_SEARCH_FIELDS.nmKor"
         />
       </li>

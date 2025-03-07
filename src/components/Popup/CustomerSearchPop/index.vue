@@ -15,7 +15,7 @@
                     type="text"
                     name="cust"
                     disabled="false"
-                    @change="handleChangeField"
+                    @input="handleChangeField"
                     @keydown="handleKeyDown"
                     class="ip1"
                     v-model="INITIAL_SEARCH_FIELDS.cust"

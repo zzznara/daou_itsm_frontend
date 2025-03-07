@@ -10,7 +10,7 @@
           v-model="userId"
           class="LoginId"
           type="text"
-          @change="(event) => (userId.value = event.target.value)"
+          @input="(event) => (userId.value = event.target.value)"
         />
         <div class="Tag">아이디</div>
         <!-- <v-text-field
@@ -29,7 +29,7 @@
           class="LoginPw"
           v-model="password"
           type="password"
-          @change="(event) => (password = event.target.value)"
+          @input="(event) => (password = event.target.value)"
           @keypress="onKeyPress"
           style="font-family: 'Courier New', Courier, monospace !important"
         />
@@ -57,7 +57,7 @@
           class="SaveAccount"
           type="checkbox"
           checked="saveIDFlag"
-          @change="handleSaveIDFlag"
+          @input="handleSaveIDFlag"
         />
         <button class="SaveAccountText" htmlFor="id_save" style="margin-right: 15px">
           ID/PW 저장

@@ -48,7 +48,7 @@
         type="text"
         class="keyword_menu"
         placeholder="메뉴명을 입력하세요"
-        @change="handleChange"
+        @input="handleChange"
         @keypress="handleKeyPress"
         variant="outlined"
         v-model="searchValue"

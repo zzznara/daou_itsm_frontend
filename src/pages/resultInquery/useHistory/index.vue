@@ -7,17 +7,10 @@
   <!-- // handleMasterNew="handleMasterNew"
         // handleMasterDelete="handleMasterDelete"
         // handleMasterSave="handleMasterSave" -->
-  <SearchBar
-    :setSearchParameters="setSearchParameters"
-    :systemCd="userInfo.systemCd"
-  />
+  <SearchBar :setSearchParameters="setSearchParameters" :systemCd="userInfo.systemCd" />
 
   <div class="grid_wrap">
-    <AUIGrid
-      ref="myGrid"
-      :columnLayout="columnLayout"
-      :gridProps="defaultGridProps"
-    />
+    <AUIGrid ref="myGrid" :columnLayout="columnLayout" :gridProps="defaultGridProps" />
   </div>
   <ul class="t_form">
     <li style="height: 128px">
@@ -29,7 +22,7 @@
           id="useHisCntn"
           name="useHisCntn"
           value="fieldValues.useHisCntn"
-          @change="handleChangeField"
+          @input="handleChangeField"
           :disabled="true"
           class="ip2"
           style="height: 100px; vertical-align: middle"

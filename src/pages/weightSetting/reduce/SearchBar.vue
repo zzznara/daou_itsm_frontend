@@ -9,26 +9,19 @@
               type="text"
               name="custNm"
               class="ip1"
-              @change="handleChangeField"
+              @input="handleChangeField"
               @keydown="setCustTxt"
               v-model="searchValues.custNm"
             />
           </div>
           <div>
-            <button type="button" @click="handleSearchCust" class="btn_ip">
-              검색
-            </button>
+            <button type="button" @click="handleSearchCust" class="btn_ip">검색</button>
           </div>
         </div>
       </li>
       <li>
         <div class="divide50"><span class="dot">⦁</span> 감량코드</div>
-        <input
-          type="text"
-          class="datainput"
-          name="reduceCd"
-          @change="handleChangeField"
-        />
+        <input type="text" class="datainput" name="reduceCd" @input="handleChangeField" />
       </li>
     </ul>
   </div>
