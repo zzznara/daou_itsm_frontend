@@ -21,15 +21,6 @@
         </li>
       </ul>
     </div>
-    <!-- <v-toolbar-title class="d-flex">
-      <v-btn
-        v-for="menu in menuStore.menu"
-        :key="menu.id"
-        @click="menuClick(menu.id)"
-      >
-        {{ menu.title }}
-      </v-btn>
-    </v-toolbar-title> -->
   </v-app-bar>
   <div id="content">
     <div class="box_greytap">
@@ -95,10 +86,6 @@ const {
   menuActionList,
 } = storeToRefs(appStore);
 
-// watch(menuActionList.value, (newValue, oldValue) => {
-// console.log("menuActionList 변경감지 : ", newValue, " / " + oldValue);
-// });
-
 if (topMenuKey === undefined) {
   appStore.setTopMenuKey("0000000100");
 }
@@ -118,21 +105,17 @@ const activeTab = ref(dashboard);
 
 const handleClick = (menuId) => {
   appStore.setTopMenuKey(menuId);
-  // console.log("topMenuKey : ", topMenuKey.value);
 };
 
 watch(
   () => bus.value.get("handleTabOpenClick"),
   (item) => {
-    // console.log("watch handleTabOpenClick :", item[0]);
-    // onActiveTab(item[0].path);
     activeTab.value = item[0];
   }
 );
 
 const handleMainTabOpenClick = (tabKey) => {
   activeTab.value = tabKey; // 클릭된 탭을 활성화된 탭으로 설정
-  // console.log(tabKey);
   const foundMenu = menuActionList.value.find((element) => element.menuId === tabKey);
   // ANCHOR: 열려질 Tab
   // ANCHOR: 이전 Tab 기억
@@ -147,7 +130,6 @@ const handleMainTabOpenClick = (tabKey) => {
 
 const handleTabOpenClick = (menu) => {
   activeTab.value = menu.menuUrl; // 클릭된 탭을 활성화된 탭으로 설정
-  // console.log(menu.menuUrl);
   const foundMenu = menuActionList.value.find((element) => element.menuUrl === menu.menuUrl);
   // ANCHOR: 열려질 Tab
   // ANCHOR: 이전 Tab 기억
@@ -162,8 +144,6 @@ const handleTabOpenClick = (menu) => {
 
 // ANCHOR: 메뉴 한개씩 닫기
 const handleTabCloseClick = (tabKey, event) => {
-  // menuListStore.deleteItem(itemId);
-
   appStore.setMenuActionList(
     menuActionList.value
       .map((data) => data.menuId !== tabKey && data)
@@ -217,8 +197,6 @@ const tabMenusRef = ref(null); // tab-menus 컨테이너용 ref
 const tabScrollContainerRef = ref(null); // 탭 스크롤 컨테이너용 ref
 // 탭을 좌우로 스크롤
 const scrollTabs = (direction) => {
-  // console.log("tabScrollContainerRef : ", tabScrollContainerRef.value.scrollLeft);
-  // console.log("tabMenusRef : ", tabMenusRef.value);
   if (tabScrollContainerRef.value && tabMenusRef.value) {
     const scrollLeft = tabScrollContainerRef.value.scrollLeft;
     const visibleTabs = Array.from(tabMenusRef.value.children);

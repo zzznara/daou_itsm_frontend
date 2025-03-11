@@ -1,3 +1,4 @@
+<!-- 권한별메뉴관리 -->
 <template>
   <ButtonBar
     :menuInfo="menuInfo"
@@ -23,8 +24,8 @@
         />
         <div class="searchdata" style="margin-top: 10px">
           <ul class="displays">
-            <li style="width: 180px">
-              <div style="width: 80px">
+            <li style="width: 190px">
+              <div style="width: 90px">
                 <span class="dot">⦁</span>
                 메뉴아이디
               </div>
@@ -84,7 +85,6 @@ import { getGridValidateCheck, isFieldDisabled, saveGridCheckData } from "@/util
 import { useAppStore } from "@/stores/app";
 import { storeToRefs } from "pinia";
 import { useAxiosWithAuthorization } from "@/utils/api";
-import { INITIAL_FIELD_RULES } from "./validateFields";
 import { swalConfirm, Toast } from "@/components/Confirm/swal";
 
 const menuInfo = ref();
@@ -92,7 +92,6 @@ const menuInfo = ref();
 const myGrid = ref();
 const myGridMenuAuth = ref();
 const myGridMenu = ref();
-
 const appStore = useAppStore();
 const { menuList, menuActionList, menuKey, userInfo } = storeToRefs(appStore);
 
@@ -144,7 +143,6 @@ onMounted(async () => {
 
   menuActionList.value.find((element) => {
     if (element.menuId === menuKey.value) {
-      // console.log("element : ", element);
       menuInfo.value = element;
     }
   });
@@ -154,21 +152,26 @@ onMounted(async () => {
 onBeforeMount(() => {
   menuActionList.value.find((element) => {
     if (element.menuId === menuKey.value) {
-      // console.log("element : ", element);
       menuInfo.value = element;
     }
   });
 });
 
 const setSearchParameters = (values) => {
-  // console.log("setSearchParameters : ", values);
   primaryParameters.value = values;
 };
+
 const handleMasterNew = () => {};
 const handleMasterExcel = () => {};
 
+//메뉴검색 항목이 변경될때 사용되는 함수
+const handleMenuChangeField = (event) => {
+  const { name, value } = event.target;
+
+  menuFieldValues.value = { ...menuFieldValues, [name]: value };
+};
+
 const handleMasterSearch = async () => {
-  // console.log("handleMasterSearch  : ", primaryParameters.value);
   const { state, fetch } = useAxiosWithAuthorization(
     {
       url: SERARCH_AUTH_URL,
@@ -181,11 +184,10 @@ const handleMasterSearch = async () => {
 
   try {
     await fetch();
-    // console.log("state : ", state);
 
     if (state.value.data) {
       const data = state.value.data.data;
-      // console.log("auiMasterGrid 데이터: ", data);
+
       if (data.length !== 0) {
         auiAuthGrid.showAjaxLoader();
         auiAuthGrid.setGridData(data);
@@ -213,11 +215,10 @@ const handleMenuSearch = async () => {
 
   try {
     await fetch();
-    // console.log("state : ", state);
 
     if (state.value.data) {
       const data = state.value.data.data;
-      // console.log("auiMasterGrid 데이터: ", data);
+
       if (data.length !== 0) {
         auiMenuGrid.showAjaxLoader();
         auiMenuGrid.setGridData(data);
@@ -246,11 +247,10 @@ const searchAuthMenuList = async (authId) => {
 
   try {
     await fetch();
-    // console.log("state : ", state);
 
     if (state.value.data) {
       const data = state.value.data.data;
-      // console.log("auiMasterGrid 데이터: ", data);
+
       if (data.length !== 0) {
         auiMenuAuthGrid.showAjaxLoader();
         auiMenuAuthGrid.setGridData(data);
@@ -303,7 +303,6 @@ const handleMasterSave = async () => {
         await fetch();
         if (state.value.data) {
           const data = state.value.data.data;
-          // console.log("권한별 메뉴 데이터 저장 : ", data);
 
           Toast.fire({
             icon: "success",
@@ -340,18 +339,10 @@ const handleMenuAuthAdd = () => {
   const auiMenuGrid = myGridMenu.value;
 
   const menuItem = auiMenuGrid.getSelectedItems()[0].item;
-  // console.log(menuItem);
   const authItem = auiAuthGrid.getSelectedItems()[0].item;
-  // console.log(authItem);
   var rows = auiMenuAuthGrid.getRowsByValue("menuId", menuItem.menuId);
-  // console.log(rows);
+
   if (rows.length > 0) {
-    // ModalConfirm({
-    //   title: "메뉴존재",
-    //   description:
-    //     "선택한 메뉴는 그리드에 있습니다. 다시 선택하시기 바랍니다. ",
-    //   type: "alert",
-    // });
     Toast.fire({
       icon: "warning",
       title: "메뉴존재",
@@ -369,16 +360,9 @@ const handleMenuAuthAdd = () => {
       printAuthYn: "N",
       excelAuthYn: "N",
     };
-    // console.log(newData);
+    ㄴ;
     auiMenuAuthGrid.addRow(newData, "last");
   }
-};
-
-//메뉴검색 항목이 변경될때 사용되는 함수
-const handleMenuChangeField = (event) => {
-  const { name, value } = event.target;
-
-  menuFieldValues.value = { ...menuFieldValues, [name]: value };
 };
 </script>
 

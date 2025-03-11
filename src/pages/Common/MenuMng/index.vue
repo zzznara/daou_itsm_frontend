@@ -1,3 +1,4 @@
+<!-- 메뉴관리 -->
 <template>
   <ButtonBar
     :menuInfo="menuInfo"
@@ -24,66 +25,6 @@
   <div class="data_wrap">
     <div class="subdatabox">
       <h5>메뉴상세정보</h5>
-      <!-- <v-row class="pa-0 ma-0">
-        <v-col class="t_form pa-0 ma-0" cols="3">
-          <li class="doublehalf">
-            <div class="title"><span class="red">*</span>메뉴아이디</div>
-            <div class="formbox">
-              <input
-                id="menuId"
-                v-model="fieldValues.menuId"
-                name="menuId"
-                class="ip2"
-                :disabled="isFieldDisabled(state, 'menuId', disabledFields)"
-                @input="handleChangeField"
-              />
-            </div></li
-        ></v-col>
-        <v-col class="t_form pa-0 ma-0" cols="3"
-          ><li class="doublehalf">
-            <div class="title"><span class="red">*</span>메뉴아이디</div>
-            <div class="formbox">
-              <input
-                id="menuId"
-                v-model="fieldValues.menuId"
-                name="menuId"
-                class="ip2"
-                :disabled="isFieldDisabled(state, 'menuId', disabledFields)"
-                @input="handleChangeField"
-              />
-            </div>
-          </li>
-        </v-col>
-        <v-col class="t_form pa-0 ma-0" cols="3">
-          <li class="doublehalf">
-            <div class="title"><span class="red">*</span>메뉴아이디</div>
-            <div class="formbox">
-              <input
-                id="menuId"
-                v-model="fieldValues.menuId"
-                name="menuId"
-                class="ip2"
-                :disabled="isFieldDisabled(state, 'menuId', disabledFields)"
-                @input="handleChangeField"
-              />
-            </div></li
-        ></v-col>
-        <v-col class="t_form pa-0 ma-0" cols="3"
-          ><li class="doublehalf">
-            <div class="title"><span class="red">*</span>메뉴아이디</div>
-            <div class="formbox">
-              <input
-                id="menuId"
-                v-model="fieldValues.menuId"
-                name="menuId"
-                class="ip2"
-                :disabled="isFieldDisabled(state, 'menuId', disabledFields)"
-                @input="handleChangeField"
-              />
-            </div>
-          </li>
-        </v-col>
-      </v-row> -->
       <ul class="t_form">
         <li class="doublehalf">
           <div class="title"><span class="red">*</span>메뉴아이디</div>
@@ -182,16 +123,6 @@
               :disabled="isFieldDisabled(state, 'sortSeq', disabledFields)"
               @input="handleChangeField"
             />
-            <!-- <input
-              type="number"
-              min="1"
-              max="100"
-              name="sortSeq"
-              id="sortSeq"
-              @input="handleChangeField"
-              v-model="fieldValues.sortSeq"
-              class="ip1"
-            /> -->
           </div>
         </li>
         <li class="doublehalf">
@@ -270,11 +201,9 @@ const initItem = {
   useYn: "",
   status: "",
 };
+
 const fieldValues = ref(initItem);
-watch(
-  () => fieldValues.value,
-  () => {}
-);
+
 const primaryParameters = ref({
   menuId: "",
   menuNmKor: "",
@@ -294,12 +223,9 @@ onMounted(async () => {
   myGrid.value.bind("cellClick", function (event) {
     gridCellClick(event.item);
   });
-  // console.log("menuActionList 온마운트::  ", menuActionList.value);
-  // console.log("menuKey.value 온마운트::  ", menuKey.value);
   appStore.$patch(); // store 업데이트 보장
   menuActionList.value.find((element) => {
     if (element.menuId === menuKey.value) {
-      // console.log("element : ", element);
       menuInfo.value = element;
     }
   });
@@ -307,7 +233,6 @@ onMounted(async () => {
 onBeforeMount(() => {
   menuActionList.value.find((element) => {
     if (element.menuId === menuKey.value) {
-      // console.log("element : ", element);
       menuInfo.value = element;
     }
   });
@@ -329,7 +254,6 @@ const gridCellClick = (item) => {
     state.value = "updated";
   }
 
-  // console.log(item);
   fieldValues.value = item;
 };
 
@@ -338,7 +262,6 @@ const handleChangeField = (event) => {
   const { name, value } = event.target;
   const items = auiGrid.getSelectedItems()[0];
   const item = items.item;
-  // console.log("name === " + name + " || value === " + value);
   item[name] = value;
   fieldValues.value = { ...fieldValues.value, [name]: value };
   auiGrid.updateRow(item, "selectedIndex");
@@ -361,11 +284,10 @@ const handleMasterSearch = async () => {
 
   try {
     await fetch();
-    // console.log("state : ", state);
 
     if (state.value.data) {
       const data = state.value.data.data;
-      // console.log("auiMasterGrid 데이터: ", data);
+
       if (data.length !== 0) {
         auiGrid.showAjaxLoader();
         auiGrid.setGridData(data);
@@ -406,7 +328,6 @@ const handleMasterSave = () => {
   var items = auiGrid.getGridData();
 
   const result = getGridValidateCheck(auiGrid, items, INITIAL_FIELD_RULES);
-  // console.log("result ??? ", result.isValidate);
   if (result.isValidate) {
     document.getElementsByName(result.column)[0].focus();
     Toast.fire({
@@ -435,11 +356,9 @@ const handleMasterSave = () => {
       );
       try {
         await fetch();
-        // console.log("state : ", state);
 
         if (state.value.data) {
           const data = state.value.data.data;
-          // console.log("메뉴 데이터 저장 : ", data);
 
           handleMasterSearch();
 

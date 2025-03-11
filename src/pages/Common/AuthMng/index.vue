@@ -1,3 +1,4 @@
+<!-- 권한관리 -->
 <template>
   <ButtonBar
     :menuInfo="menuInfo"
@@ -8,7 +9,6 @@
     :handleMasterExcel="handleMasterExcel"
   />
   <SearchBar :setSearchParameters="setSearchParameters" />
-  <!-- :systemCd="userInfo.systemCd" -->
 
   <div class="grid_wrap">
     <AUIGrid ref="myGrid" :columnLayout="columnLayout" :gridProps="defaultGridProps" />
@@ -184,11 +184,8 @@ onMounted(async () => {
   auiGrid.bind("cellClick", function (event) {
     gridCellClick(event.item);
   });
-  // console.log("menuActionList 온마운트::  ", menuActionList.value);
-  // console.log("menuKey.value 온마운트::  ", menuKey.value);
   menuActionList.value.find((element) => {
     if (element.menuId === menuKey.value) {
-      // console.log("element : ", element);
       menuInfo.value = element;
     }
   });
@@ -196,7 +193,6 @@ onMounted(async () => {
 onBeforeMount(() => {
   menuActionList.value.find((element) => {
     if (element.menuId === menuKey.value) {
-      // console.log("element : ", element);
       menuInfo.value = element;
     }
   });
@@ -216,11 +212,9 @@ const gridCellClick = (item) => {
     state.value = "updated";
   }
 
-  // console.log(item);
   fieldValues.value = item;
 };
 const setSearchParameters = (values) => {
-  // console.log(values);
   primaryParameters.value = values;
 };
 
@@ -229,7 +223,6 @@ const handleChangeField = (event) => {
   const { name, value } = event.target;
   const items = auiGrid.getSelectedItems()[0];
   const item = items.item;
-  //console.log("name === " + name + " || value === " + value);
   if (name === "telNo" || name === "mobileNo") {
     //전화번호 관련 함수 정의
     const regex = /^[0-9\b -]{0,13}$/;
@@ -258,11 +251,9 @@ const handleMasterSearch = async () => {
 
   try {
     await fetch();
-    // console.log("state : ", state);
 
     if (state.value.data) {
       const data = state.value.data.data;
-      // console.log("권한관리 데이터: ", data);
 
       if (data.length !== 0) {
         auiGrid.showAjaxLoader();
@@ -273,11 +264,8 @@ const handleMasterSearch = async () => {
 
       auiGrid.setGridData(data);
     } else {
-      // console.error("No data received");
     }
-  } catch (error) {
-    // console.error("Error fetching menu list:", error);
-  }
+  } catch (error) {}
 };
 const handleMasterNew = () => {
   const auiGrid = myGrid.value;
@@ -291,6 +279,7 @@ const handleMasterDelete = () => {
   const auiGrid = myGrid.value;
   auiGrid.removeRow("selectedIndex");
 };
+
 const handleMasterSave = async () => {
   let yn = {
     title: "저장",
@@ -303,7 +292,7 @@ const handleMasterSave = async () => {
   var items = auiGrid.getGridData();
 
   const result = getGridValidateCheck(auiGrid, items, INITIAL_FIELD_RULES);
-  // console.log("result ??? ", result.isValidate);
+
   if (result.isValidate) {
     document.getElementsByName(result.column)[0].focus();
     Toast.fire({
@@ -334,7 +323,6 @@ const handleMasterSave = async () => {
         await fetch();
         if (state.value.data) {
           const data = state.value.data.data;
-          // console.log("메뉴 데이터 저장 : ", data);
 
           handleMasterSearch();
 
@@ -366,7 +354,7 @@ const handleMasterSave = async () => {
 const handleMasterExcel = () => {
   const auiGrid = myGrid.value;
   auiGrid.exportToXlsx({
-    fileName: menuInfo.menuNmKor + " 리스트",
+    fileName: menuInfo.value.menuNmKor + " 리스트",
   });
 };
 </script>

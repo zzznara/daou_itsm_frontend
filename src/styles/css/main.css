@@ -1085,7 +1085,8 @@ ul li img {
 .aui-grid .aui-grid-table,
 .aui-grid .aui-grid-table tr,
 .aui-grid .aui-grid-table td {
-    font-size: 14px;
+    font-size: 13px !important;
+    font-weight: bold !important;
     color: #4b4b4b;
 }
 

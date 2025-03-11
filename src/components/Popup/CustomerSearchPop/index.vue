@@ -46,7 +46,7 @@
 </template>
 <script setup>
 import AUIGrid from "@/static/AUIGrid-Vue.js/AUIGrid.vue";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import { columnLayout } from "./columnLayout";
 import { defaultGridProps } from "@/components/AuiGrid/gridLayout";
 import { useAxiosWithAuthorization } from "@/utils/api";
@@ -58,10 +58,21 @@ const props = defineProps([
   "failCallbackFunc",
   "onResolve",
   "handleClose",
+  "openPopup",
 ]);
 
 const myGrid = ref();
 const searchCnt = ref(1);
+
+watch(
+  () => props.openPopup,
+  (newValue) => {
+    if (newValue) {
+      console.log("openPopup: ", newValue);
+      searchCust();
+    }
+  }
+);
 
 onMounted(async () => {
   await nextTick();
@@ -78,7 +89,6 @@ onMounted(async () => {
 const gridCellDBClick = (item) => {
   // onResolve(true); //왠진 모르지만 이거 안해주면 에러남..
   props.callbackFunc(item);
-  // setShow(false);
 };
 
 const INITIAL_SEARCH_FIELDS = ref({

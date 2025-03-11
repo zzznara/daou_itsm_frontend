@@ -1,3 +1,4 @@
+<!-- 그룹관리 -->
 <template>
   <ButtonBar
     :menuInfo="menuInfo"
@@ -152,11 +153,9 @@ onMounted(async () => {
   myGrid.value.bind("cellClick", function (event) {
     gridCellClick(event.item);
   });
-  // console.log("menuActionList 온마운트::  ", menuActionList.value);
-  // console.log("menuKey.value 온마운트::  ", menuKey.value);
+
   menuActionList.value.find((element) => {
     if (element.menuId === menuKey.value) {
-      // console.log("element : ", element);
       menuInfo.value = element;
     }
   });
@@ -164,7 +163,6 @@ onMounted(async () => {
 onBeforeMount(() => {
   menuActionList.value.find((element) => {
     if (element.menuId === menuKey.value) {
-      // console.log("element : ", element);
       menuInfo.value = element;
     }
   });
@@ -184,21 +182,18 @@ const gridCellClick = (item) => {
     state.value = "updated";
   }
 
-  // console.log(item);
   fieldValues.value = item;
 };
 const setSearchParameters = (values) => {
-  // console.log(values);
   primaryParameters.value = values;
 };
 
 const handleChangeField = (event) => {
   const auiGrid = myGrid.value;
-  // console.log(event);
+
   const { name, value } = event.target;
   const items = auiGrid.getSelectedItems()[0];
   const item = items.item;
-  // console.log("name === " + name + " || value === " + value);
 
   item[name] = value;
   fieldValues.value = { ...fieldValues.value, [name]: value };
@@ -219,11 +214,10 @@ const handleMasterSearch = async () => {
 
   try {
     await fetch();
-    // console.log("state : ", state);
 
     if (state.value.data) {
       const data = state.value.data.data;
-      // console.log("auiMasterGrid 데이터: ", data);
+
       if (data.length !== 0) {
         auiGrid.showAjaxLoader();
         auiGrid.setGridData(data);
@@ -263,7 +257,7 @@ const handleMasterSave = async () => {
   var items = auiGrid.getGridData();
 
   const result = getGridValidateCheck(auiGrid, items, INITIAL_FIELD_RULES);
-  // console.log("result ??? ", result.isValidate);
+
   if (result.isValidate) {
     document.getElementsByName(result.column)[0].focus();
     Toast.fire({
@@ -294,7 +288,6 @@ const handleMasterSave = async () => {
         await fetch();
         if (state.value.data) {
           const data = state.value.data.data;
-          // console.log("메뉴 데이터 저장 : ", data);
 
           handleMasterSearch();
 
@@ -326,7 +319,7 @@ const handleMasterSave = async () => {
 const handleMasterExcel = () => {
   const auiGrid = myGrid.current;
   auiGrid.exportToXlsx({
-    fileName: menuInfo.menuNmKor + " 리스트",
+    fileName: menuInfo.value.menuNmKor + " 리스트",
   });
 };
 </script>

@@ -1,3 +1,4 @@
+<!-- 사용자관리 -->
 <template>
   <ButtonBar
     :menuInfo="menuInfo"
@@ -296,9 +297,10 @@
   </div>
   <DeptPopup
     v-model="deptPopup"
-    :openDeptPopup="deptPopup"
     :searchTxt="fieldValues.dptNm"
     :callbackFunc="setDeptInfo"
+    :autoSelect="autoSelect"
+    :failCallbackFunc="restoreDeptData"
     :handleClose="handleDeptPopupClose"
   ></DeptPopup>
 </template>
@@ -334,11 +336,13 @@ const { menuList, menuActionList, menuKey, userInfo } = storeToRefs(appStore);
 const menuInfo = ref({});
 
 const state = ref("normaled");
+
 //추가, 수정일때 항목의 disabled 결정
 const disabledFields = {
   created: [],
   updated: ["systemCd", "userId"],
 };
+const autoSelect = ref(false);
 
 const initItem = {
   systemCd: "",
@@ -361,6 +365,7 @@ const initItem = {
   etcoDt: "",
   useYn: "",
 };
+
 const fieldValues = ref(initItem);
 
 const oldValues = ref({
@@ -373,7 +378,6 @@ const primaryParameters = ref({
 });
 
 const setSearchParameters = (values) => {
-  // console.log(values);
   primaryParameters.value = values;
 };
 
@@ -381,31 +385,30 @@ const setSearchParameters = (values) => {
 const SERARCH_USER_URL = "/common/user/searchUserList";
 //상차지 저장 URL
 const SAVE_USER_URL = "/common/user/saveUserList";
+
 onMounted(async () => {
   await nextTick(); // DOM 업데이트를 보장
   const auiGrid = myGrid.value;
+  auiGrid.resize("100%", "100%");
 
   auiGrid.bind("cellClick", function (event) {
     gridCellClick(event.item);
   });
   menuActionList.value.find((element) => {
     if (element.menuId === menuKey.value) {
-      // console.log("element : ", element);
       menuInfo.value = element;
     }
   });
-  // const auiGrid = myGrid.value;
-  // auiGrid.resize("100%", "100%");
 });
 
 onBeforeMount(() => {
   menuActionList.value.find((element) => {
     if (element.menuId === menuKey.value) {
-      // console.log("element : ", element);
       menuInfo.value = element;
     }
   });
 });
+
 const updateGridData = (key, value) => {
   const auiGrid = myGrid.value;
   const items = auiGrid.getSelectedItems()[0];
@@ -454,8 +457,6 @@ const handleMasterSearch = async () => {
 
   try {
     await fetch();
-    // console.log("state : ", state);
-
     if (state.value.data) {
       const data = state.value.data.data;
       // console.log("사용자관리 데이터: ", data);
@@ -501,7 +502,6 @@ const handleMasterSave = async () => {
   var items = auiGrid.getGridData();
 
   const result = getGridValidateCheck(auiGrid, items, INITIAL_FIELD_RULES);
-  // console.log("result ??? ", result.isValidate);
   if (result.isValidate) {
     document.getElementsByName(result.column)[0].focus();
     Toast.fire({
@@ -531,11 +531,9 @@ const handleMasterSave = async () => {
       );
       try {
         await fetch();
-        // console.log("state : ", state);
 
         if (state.value.data) {
           const data = state.value.data.data;
-          // console.log("메뉴 데이터 저장 : ", data);
 
           handleMasterSearch();
 
@@ -569,7 +567,6 @@ const handleChangeField = (event) => {
   const { name, value } = event.target;
   const items = auiGrid.getSelectedItems()[0];
   const item = items.item;
-  //console.log("name === " + name + " || value === " + value);
 
   if (name === "telNo" || name === "mobileNo") {
     //전화번호 관련 함수 정의
@@ -588,9 +585,6 @@ const handleChangeField = (event) => {
 
 const handleMasterExcel = () => {
   const auiGrid = myGrid.value;
-  // auiGrid.exportToXlsx({
-  //   fileName: props.menuInfo.menuNmKor + " 리스트",
-  // });
   auiGrid.exportToXlsx({
     fileName: menuInfo.value.menuNmKor + " 리스트",
   });
@@ -598,11 +592,6 @@ const handleMasterExcel = () => {
 
 const handleSearchDept = () => {
   deptPopup.value = true;
-  // console.log("handleSearchDept");
-  // ModalDeptSearchPop({
-  //   searchTxt: fieldValues.dptNm,
-  //   callbackFunc: setDeptInfo,
-  // });
 };
 
 const handleDeptPopupClose = () => {
@@ -622,17 +611,6 @@ const setDeptInfo = (deptInfo) => {
     updateGridData("dptCd", deptInfo.detlCd);
     updateGridData("dptNm", deptInfo.cdNmKor);
   }
-
-  // fieldValues.value = ({
-  // 	...fieldValues,
-  // 	custCd: custInfo.custCd,
-  // 	custNm: custInfo.custNm,
-  //   });
-
-  //   oldValues.value = ({ ...oldValues, custNm: custInfo.custNm });
-
-  //   updateGridData("custCd", custInfo.custCd);
-  //   updateGridData("custNm", custInfo.custNm);
 };
 
 const setDeptInfoTxt = (evt) => {
@@ -642,14 +620,16 @@ const setDeptInfoTxt = (evt) => {
 };
 
 const chkDeptData = (evt) => {
-  // if (evt.target.value !== undefined && evt.target.value !== "") {
-  //   ModalDeptSearchPop({
-  //     callbackFunc: setDeptInfo,
-  //     searchTxt: evt.target.value,
-  //     autoSelect: true,
-  //     failCallbackFunc: restoreDeptData,
-  //   });
-  // }
+  if (evt.target.value !== undefined && evt.target.value !== "") {
+    autoSelect.value = true;
+    deptPopup.value = true;
+    // ModalDeptSearchPop({
+    //   callbackFunc: setDeptInfo,
+    //   searchTxt: evt.target.value,
+    //   autoSelect: true,
+    //   failCallbackFunc: restoreDeptData,
+    // });
+  }
 };
 
 const restoreDeptData = () => {

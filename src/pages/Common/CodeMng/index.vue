@@ -1,3 +1,4 @@
+<!-- 공통코드관리 -->
 <template>
   <div class="flexible_button_box">
     <div class="title">
@@ -87,6 +88,7 @@ let primaryParameters = ref({
   cdNmKor: "",
   useYn: "",
 });
+
 const codeFieldValues = ref({
   mastCd: "",
   cdNmKor: "",
@@ -100,6 +102,7 @@ const SAVE_MASTER_CODE_URL = "/common/code/saveMasterCode";
 const SEARCH_DETAIL_CODE_URL = "/common/code/searchDetailCode";
 //공통세부코드 저장 URL
 const SAVE_DETAIL_CODE_URL = "/common/code/saveDetailCode";
+
 // watch(menuKey, (newValue, oldValue) => {
 //   console.log("newValue : ", newValue, "oldValue : ", oldValue);
 //   menuActionList.value.find((element) => {
@@ -131,25 +134,6 @@ onMounted(async () => {
       menuInfo.value = element;
     }
   });
-
-  // auiMasterGrid.create(createMasterColumnData(), {
-  //   ...defaultGridProps,
-  //   editable: true,
-  // });
-  // auiDetailGrid.create(createDetailColumnData(), {
-  //   ...defaultGridProps,
-  //   editable: true,
-  // });
-
-  // const masterGridElement = document.getElementById(masterGrid);
-  // const detailGridElement = document.getElementById(detailGrid);
-  // if (masterGrid.value) {
-  //   masterGrid.value.classList.add("custom-auigrid-class");
-  // }
-
-  // if (detailGrid.value) {
-  //   detailGrid.value.classList.add("custom-auigrid-class");
-  // }
 
   // 리사이즈 이벤트 리스너 추가
   window.addEventListener("resize", handleResize);
@@ -233,10 +217,10 @@ const handleMasterSearch = async () => {
   );
   try {
     await fetch();
-    // console.log("state : ", state);
+
     if (state.value.data) {
       const data = state.value.data.data;
-      // console.log("auiMasterGrid 데이터: ", data);
+
       masterGrid.value.setGridData(data);
     } else {
       console.error("No data received");
@@ -256,7 +240,7 @@ const searchDetailList = async (mastCd) => {
   );
   try {
     await fetch();
-    // console.log("state : ", state);
+
     if (state.value.data) {
       const data = state.value.data.data;
       // console.log("auiDetailGrid 데이터: ", data);

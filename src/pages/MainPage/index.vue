@@ -1,3 +1,4 @@
+<!-- 대시보드(계근결과조회) -->
 <template>
   <!-- <ButtonBar
     :menuInfo="menuInfo"
@@ -78,7 +79,6 @@ const primaryParameters = ref({
 });
 
 const setSearchParameters = (values) => {
-  // console.log(values);
   primaryParameters.value = {
     ...primaryParameters,
     category: values.category,
@@ -91,17 +91,6 @@ const setSearchParameters = (values) => {
     endDt: values.endDt,
   };
 };
-
-// watch(menuList, (newValue) => {
-//   if (newValue) {
-//     console.log("menuList 업데이트됨: ", newValue);
-//     menuList.value.data.find((element) => {
-//       if (element.menuId === "0000004010") {
-//         menuInfo.value = element;
-//       }
-//     });
-//   }
-// });
 
 onBeforeMount(() => {
   if (menuList.value.data) {
@@ -142,7 +131,6 @@ const gridCellClick = (item) => {
     state.value = "updated";
   }
 
-  // console.log(item);
   fieldValues.value = item;
 };
 
@@ -187,41 +175,11 @@ const handleMasterNew = () => {
   gridCellClick(items.item);
 };
 
-const handleMasterDelete = () => {
-  // const auiGrid = myGrid.current;
-  // auiGrid.removeRow("selectedIndex");
-};
+const handleMasterDelete = () => {};
 
-const handleMasterSave = async () => {
-  // if (
-  //   await ModalConfirm({
-  //     title: "저장",
-  //     description: "데이터를 저장하시겠습니까?",
-  //   })
-  // ) {
-  //   let validator = [];
-  //   const auiGrid = myGrid.current;
-  //   var items = auiGrid.getGridData();
-  //   const result = getGridValidateCheck(auiGrid, items, INITIAL_FIELD_RULES);
-  //   if (result.isValidate) {
-  //     document.getElementsByName(result.column)[0].focus();
-  //     ModalConfirm({
-  //       title: "필수항목체크",
-  //       description: result.message,
-  //       type: "alert",
-  //     });
-  //     auiGrid.setSelectionByIndex(result.rowIndex);
-  //     gridCellClick(result.rowItem);
-  //     return;
-  //   }
-};
+const handleMasterSave = async () => {};
 
-const handleMasterExcel = () => {
-  // const auiGrid = myGrid.current;
-  // auiGrid.exportToXlsx({
-  //   fileName: props.menuInfo.menuNmKor + " 리스트",
-  // });
-};
+const handleMasterExcel = () => {};
 </script>
 
 <style scoped></style>

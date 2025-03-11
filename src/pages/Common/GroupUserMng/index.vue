@@ -1,3 +1,4 @@
+<!-- 그룹별사용자관리 -->
 <template>
   <ButtonBar
     :menuInfo="menuInfo"
@@ -28,8 +29,8 @@
         />
         <div class="searchdata" style="margin-top: 10px">
           <ul class="displays">
-            <li style="width: 190px">
-              <div style="width: 90px">
+            <li style="width: 200px">
+              <div style="width: 100px">
                 <span class="dot">⦁</span>
                 사용자아이디
               </div>
@@ -138,14 +139,12 @@ const userFieldValues = ref({
 
 //그룹정보 검색 URL
 const SERARCH_GROUP_URL = "/common/group/searchGroupList";
-
 //그룹별사용자정보 검색 URL
 const SERARCH_GROUP_USER_URL = "/common/group/searchGroupUserList";
 //그룹별사용자정보 저장 URL
 const SAVE_GROUP_USER_URL = "/common/group/saveGroupUserList";
 //그룹별사용자정보 삭제 URL
 const DELETE_GROUP_USER_URL = "/common/group/deleteGroupUserList";
-
 //사용자정보 검색 URL
 const SERARCH_USER_URL = "/common/group/searchUserList";
 
@@ -191,11 +190,8 @@ onMounted(async () => {
 
   appStore.$patch(); // store 업데이트 보장
 
-  // console.log("menuActionList 온마운트::  ", menuActionList.value);
-  // console.log("menuKey.value 온마운트::  ", menuKey.value);
   menuActionList.value.find((element) => {
     if (element.menuId === menuKey.value) {
-      // console.log("element : ", element);
       menuInfo.value = element;
     }
   });
@@ -203,14 +199,12 @@ onMounted(async () => {
 onBeforeMount(() => {
   menuActionList.value.find((element) => {
     if (element.menuId === menuKey.value) {
-      // console.log("element : ", element);
       menuInfo.value = element;
     }
   });
 });
 
 const setSearchParameters = (values) => {
-  // console.log(values);
   primaryParameters.value = values;
 };
 
@@ -227,11 +221,10 @@ const handleUserSearch = async () => {
 
   try {
     await fetch();
-    // console.log("state : ", state);
 
     if (state.value.data) {
       const data = state.value.data.data;
-      // console.log("auiMasterGrid 데이터: ", data);
+
       if (data.length !== 0) {
         auiUserGrid.showAjaxLoader();
         auiUserGrid.setGridData(data);
@@ -259,11 +252,10 @@ const handleMasterSearch = async () => {
   );
   try {
     await fetch();
-    // console.log("state : ", state);
 
     if (state.value.data) {
       const data = state.value.data.data;
-      // console.log("auiMasterGrid 데이터: ", data);
+
       if (data.length !== 0) {
         auiGroupGrid.showAjaxLoader();
         auiGroupGrid.setGridData(data);
@@ -291,11 +283,10 @@ const searchGroupUserList = async (groupId) => {
   );
   try {
     await fetch();
-    // console.log("state : ", state);
 
     if (state.value.data) {
       const data = state.value.data.data;
-      // console.log("auiMasterGrid 데이터: ", data);
+
       if (data.length !== 0) {
         auiGroupUserGrid.showAjaxLoader();
         auiGroupUserGrid.setGridData(data);
@@ -352,7 +343,6 @@ const handleMasterSave = async () => {
         await fetch();
         if (state.value.data) {
           const data = state.value.data.data;
-          // console.log("그룹별 사용자 데이터 저장 : ", data);
 
           Toast.fire({
             icon: "success",
@@ -387,22 +377,11 @@ const handleGroupUserAdd = () => {
   const auiGroupGrid = authGrid.value;
   const auiGroupUserGrid = authGroupGrid.value;
   const auiUserGrid = groupGrid.value;
-
   const userItem = auiUserGrid.getSelectedItems()[0].item;
-  // console.log(userItem);
   const groupItem = auiGroupGrid.getSelectedItems()[0].item;
-  // console.log(groupItem);
 
   var rows = auiGroupUserGrid.getRowsByValue("userId", userItem.userId);
-  // console.log(rows);
   if (rows.length > 0) {
-    // ModalConfirm({
-    //   title: "사용자존재",
-    //   description:
-    //     "선택한 사용자는 그리드에 있습니다. 다시 선택하시기 바랍니다. ",
-    //   type: "alert",
-    // });
-
     Toast.fire({
       icon: "warning",
       title: "사용자존재",

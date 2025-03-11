@@ -5,20 +5,7 @@
         <img src="@/images/color_logo.png" />
         <span class="logo">무인계량시스템</span>
       </router-link>
-      <!-- <div class="box_m">
-        <div class="ham" @click="toggleClass('leftmenu', 'open')">
-          <img :src="ham1" />
-        </div>
-        <div class="mobilelogo">
-          <img :src="hkslogo_o" />
-        </div>
-        <div class="btn_turnoff"><img :src="greyturnoff" /></div>
-      </div> -->
     </div>
-    <!-- <div class="m">
-      <p>시스템관리팀</p>
-      <h2>관리자</h2>
-    </div> -->
     <div class="myinfo">
       <div>
         <p>
@@ -68,7 +55,6 @@
               <p>현재메뉴</p>
             </div>
             <div class="left_menubox_title">
-              <!-- <p>{{ menuNmKor }}</p> -->
               <p>{{ menu.menuNmKor }}</p>
               <button class="btn_fav" @click="onFavoriteMenuList"></button>
             </div>
@@ -91,7 +77,6 @@
                       to="#"
                       @click="
                         (event) => {
-                          // console.log(childData.menuUrl);
                           handleClick(childData, menu.menuId);
                         }
                       "
@@ -137,32 +122,6 @@
         >
       </div>
     </div>
-    <!-- 
-    <div class="left_menubox on">
-      <div class="thisMenu">
-        <p>현재메뉴</p>
-      </div>
-      <div class="left_menubox_title">
-        <p>
-          {{ menuTitle }}
-        </p>
-        <button class="btn_fav" @click="onFavoriteMenuList"></button>
-      </div>
-    </div>
-    <v-list density="compact" height="full" variant="flat">
-      <v-list-item
-        v-for="(data, i) in menuList"
-        :key="i"
-        :value="data"
-        variant="text"
-        density="compact"
-        class="py-0 my-0"
-        color="deep-orange-darken-1"
-        @click="menuClick(data)"
-      >
-        <v-list-item-title v-text="data.title" class="menu"></v-list-item-title>
-      </v-list-item>
-    </v-list> -->
   </v-card>
   <ModalChangePwdPop v-model="changePwdPopup" @handleClose="handleClose" />
   <MenuListPop
@@ -203,6 +162,9 @@ const menuListPopup = ref(false);
 watch(topMenuKey.value, (newValue, oldValue) => {
   // console.log("topMenuKey 변경감지 : ", newValue, " / " + oldValue);
 });
+watch(menuKey.value, (newValue, oldValue) => {
+  // console.log("topMenuKey 변경감지 : ", newValue, " / " + oldValue);
+});
 
 onMounted(() => {
   changePwdPopup.value = false;
@@ -218,44 +180,18 @@ const handleMenuListClose = () => {
 
 const handleKeyPress = (event) => {
   if (event.key === "Enter") {
-    // console.log(searchValue.value);
-    // console.log("menuList.value: ", menuList.value);
-    // const searchList = menuOriginList.value.data.filter(
-    //   (menu) => menu.menuNmKor.indexOf(searchValue.value) >= 0
-    // );
     let searchList = { data: [] };
     menuOriginList.value.data.filter((menu) => {
       if (menu.menuNmKor.indexOf(searchValue.value) >= 0) {
         searchList.data.push({ ...menu });
       }
     });
-    // console.log(searchList);
 
     if (searchList !== undefined) {
       menuList.value = searchList;
     }
   }
 };
-// const handleKeyPress = (event) => {
-//   if (event.key === "Enter") {
-//     console.log("searchValue : ", searchValue.value);
-//     console.log("menuOriginList.value: ", menuOriginList.value.data);
-//     // const searchList = menuOriginList.value.filter(
-//     //   (menu) => menu.title.indexOf(searchValue.value) >= 0
-//     // );
-//     let searchList = [];
-//     menuOriginList.value.data.map((menu) => {
-//       console.log("메뉴 검색 : ", menu);
-//       if (menu.menuNmKor.indexOf(searchValue.value) >= 0) {
-//         searchList = menu;
-//       }
-//     });
-//     console.log("searchList : ", searchList);
-//     if (searchList !== undefined) {
-//       menuList.value = searchList;
-//     }
-//   }
-// };
 
 const handleChange = (event) => {
   const { name, value } = event.target;
@@ -279,10 +215,6 @@ const handleLogout = (e) => {
       icon: "success",
       title: "로그아웃하였습니다.",
     });
-    // Swal.fire({
-    //   title: "로그아웃",
-    //   icon: "success",
-    // });
     router.push("/login");
   });
 };
@@ -306,10 +238,7 @@ const onSelectMenu = (menu) => {
 };
 
 const handleClick = (menu, topMenu) => {
-  // console.log("menu : ", menu);
   const foundMenu = menuActionList.value.find((element) => element.menuId === menu.menuId);
-  // console.log("foundMenu: ", foundMenu);
-  // console.log("menu.menuUrl: ", menu.menuUrl);
 
   if (foundMenu !== undefined || !menu.menuUrl) {
     appStore.setPreviousMenuKey(menuKey.value);
@@ -321,10 +250,7 @@ const handleClick = (menu, topMenu) => {
     }
     return;
   }
-  // console.log(3);
-  // menu["component"] = PageImportLazy(menu.menuUrl);
   menuActionList.value.push(menu);
-  // console.log("menuActionList : ", menuActionList);
   appStore.setMenu(menu);
   appStore.setMenuActionList(menuActionList.value);
   appStore.setPreviousMenuKey(menuKey.value);
@@ -335,33 +261,6 @@ const handleClick = (menu, topMenu) => {
     router.push(menu.menuUrl);
   }
 };
-
-//_target : 적용시킬 element
-//_class : 적용시킬 class
-// const toggleClass = (_target, _class) => {
-//   var menu = document.getElementById(_target);
-//   if (hasClass(menu, _class)) {
-//     removeClass(menu, _class);
-//   } else {
-//     addClass(menu, _class);
-//   }
-// };
-
-function addClass(element, className) {
-  element.className += " " + className;
-}
-function removeClass(element, className) {
-  var check = new RegExp("(\\s|^)" + className + "(\\s|$)");
-  element.className = element.className.replace(check, " ").trim();
-}
-
-function hasClass(element, className) {
-  if (element.className.indexOf(className) > -1) {
-    return true;
-  } else {
-    return false;
-  }
-}
 </script>
 
 <style>

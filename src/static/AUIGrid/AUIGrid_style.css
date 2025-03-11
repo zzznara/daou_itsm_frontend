@@ -546,7 +546,7 @@
     background: -moz-linear-gradient(top, #e8e8e8, #dadada) !important;
     background: -ms-linear-gradient(top, #e8e8e8, #dadada) !important;
     background: -o-linear-gradient(top, #e8e8e8, #dadada) !important;
-    background: linear-gradient(to bottom, #e8e8e8, #dadada) !important;
+    background: linear-gradient(to bottom, #bbe4fb, #bbe4fb) !important;
 }
 
 /* 셀력션 행 대표 셀 이외의 백그라운드 스타일 */
@@ -584,7 +584,7 @@
     background: -moz-linear-gradient(top, #e8e8e8, #dadada) !important;
     background: -ms-linear-gradient(top, #e8e8e8, #dadada) !important;
     background: -o-linear-gradient(top, #e8e8e8, #dadada) !important;
-    background: linear-gradient(to bottom, #e8e8e8, #dadada) !important;
+    background: linear-gradient(to bottom, #5288ae, #5288ae) !important;
 }
 
 /* 그리드 Row 배경색 */

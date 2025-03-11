@@ -1,3 +1,4 @@
+<!-- 권한그룹별관리 -->
 <template>
   <ButtonBar
     :menuInfo="menuInfo"
@@ -23,8 +24,8 @@
         />
         <div class="searchdata" style="margin-top: 10px">
           <ul class="displays">
-            <li style="width: 180px">
-              <div style="width: 80px">
+            <li style="width: 190px">
+              <div style="width: 90px">
                 <span class="dot">⦁</span>
                 그룹아이디
               </div>
@@ -129,7 +130,6 @@ onMounted(async () => {
   });
   menuActionList.value.find((element) => {
     if (element.menuId === menuKey.value) {
-      // console.log("element : ", element);
       menuInfo.value = element;
     }
   });
@@ -139,14 +139,12 @@ onMounted(async () => {
 onBeforeMount(() => {
   menuActionList.value.find((element) => {
     if (element.menuId === menuKey.value) {
-      // console.log("element : ", element);
       menuInfo.value = element;
     }
   });
 });
 
 const setSearchParameters = (values) => {
-  // console.log(values);
   primaryParameters.value = values;
 };
 
@@ -170,11 +168,10 @@ const handleMasterSearch = async () => {
 
   try {
     await fetch();
-    // console.log("state : ", state);
 
     if (state.value.data) {
       const data = state.value.data.data;
-      // console.log("auiAuthGrid 데이터: ", data);
+
       if (data.length !== 0) {
         auiAuthGrid.showAjaxLoader();
         auiAuthGrid.setGridData(data);
@@ -203,11 +200,10 @@ const searchAuthMenuList = async (authId) => {
 
   try {
     await fetch();
-    // console.log("state : ", state);
 
     if (state.value.data) {
       const data = state.value.data.data;
-      // console.log("auiAuthGroupGrid 데이터: ", data);
+
       if (data.length !== 0) {
         auiAuthGroupGrid.showAjaxLoader();
         auiAuthGroupGrid.setGridData(data);
@@ -239,7 +235,6 @@ const handleGroupSearch = async () => {
 
     if (state.value.data) {
       const data = state.value.data.data;
-      // console.log("auiGroupGrid  데이터: ", data);
       if (data.length !== 0) {
         auiGroupGrid.showAjaxLoader();
         auiGroupGrid.setGridData(data);
@@ -298,7 +293,6 @@ const handleMasterSave = async () => {
         await fetch();
         if (state.value.data) {
           const data = state.value.data.data;
-          // console.log("권한별 메뉴 데이터 저장 : ", data);
 
           Toast.fire({
             icon: "success",
@@ -333,18 +327,11 @@ const handleGroupAuthAdd = () => {
   const auiAuthGroupGrid = myGridAuthGroup.value;
   const auiGroupGrid = myGridGroup.value;
   const groupItem = auiGroupGrid.getSelectedItems()[0].item;
-  // console.log(groupItem);
+
   const authItem = auiAuthGrid.getSelectedItems()[0].item;
-  // console.log(authItem);
 
   var rows = auiAuthGroupGrid.getRowsByValue("groupId", groupItem.groupId);
-  // console.log(rows);
   if (rows.length > 0) {
-    // ModalConfirm({
-    //   title: "그룹존재",
-    //   description: "선택한 그룹은 그리드에 있습니다. 다시 선택하시기 바랍니다. ",
-    //   type: "alert",
-    // });
     Toast.fire({
       icon: "warning",
       title: "그룹존재",
@@ -359,7 +346,7 @@ const handleGroupAuthAdd = () => {
 const handleMasterExcel = () => {
   const auiGrid = myGrid.value;
   auiGrid.exportToXlsx({
-    fileName: menuInfo.menuNmKor + " 리스트",
+    fileName: menuInfo.value.menuNmKor + " 리스트",
   });
 };
 </script>

@@ -1,7 +1,9 @@
 <template>
   <v-dialog width="auto" class="commonDialog">
     <v-card>
-      <v-card-title class="modal-header">부서 검색 팝업 </v-card-title>
+      <v-card-title>
+        <h3>부서 검색 팝업</h3>
+      </v-card-title>
       <v-card-text
         style="
           flex: 1 1 auto;
@@ -130,7 +132,7 @@ const searchItem = async () => {
       if (
         props.searchTxt !== undefined &&
         data.length === 1 &&
-        autoSelect === true &&
+        props.autoSelect === true &&
         searchCnt.value === 1
       ) {
         props.handleClose();
