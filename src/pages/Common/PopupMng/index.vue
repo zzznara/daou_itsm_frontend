@@ -61,8 +61,9 @@
               :disabled="isFieldDisabled(state, 'popupTy', disabledFields)"
               @change="handleChangeField"
             >
-              <option value="레이어">레이어</option>
-              <option value="윈도우">윈도우</option>
+              <option value="">선택</option>
+              <option value="layer">레이어</option>
+              <option value="window">윈도우</option>
             </select>
           </div>
         </li>
@@ -139,7 +140,9 @@
           <div class="title"><span class="red">*</span>사용여부</div>
           <div class="formbox">
             <select
+              id="useYn"
               v-model="fieldValues.useYn"
+              name="useYn"
               class="ip2"
               :disabled="isFieldDisabled(state, 'useYn', disabledFields)"
               @change="handleChangeField"
@@ -154,9 +157,8 @@
           <div class="title">팝업내용</div>
           <div class="formbox">
             <textarea
-              v-model="fieldValues.popupCn"
-              rows="1"
               id="popupCn"
+              v-model="fieldValues.popupCn"
               name="popupCn"
               class="ip2"
               :disabled="isFieldDisabled(state, 'popupCn', disabledFields)"
@@ -198,12 +200,14 @@ const initItem = {
   popupId: "",
   popupNm: "",
   popupTy: "",
+  popupTyNm: "",
   popupUrl: "",
-  width: "",
-  height: "",
-  positionX: "",
-  positionY: "",
+  width: "400",
+  height: "400",
+  positionX: "0",
+  positionY: "0",
   useYn: "",
+  useYnNm: "",
   popupCn: "",
 };
 
@@ -212,6 +216,7 @@ const searchParameters = ref({
   popupId: "",
   popupNm: "",
 });
+const selectedRowIndex = ref();
 
 //팝업정보 검색 URL
 const SEARCH_POPUP_URL = "/common/popup/list";
@@ -258,12 +263,31 @@ const gridCellClick = (item) => {
   fieldValues.value = { ...item };
 };
 
-const handleChangeField = (event) => {
-  const { id, value } = event.target || event;
-  fieldValues.value[id] = value;
-  
+const handleChangeField = (e) => {
+  const field = e?.target?.name;
+  const value = e?.target?.value || e;
+
+  if (!field) return;
+
+  if (field === 'useYn') {
+    fieldValues.value = {
+      ...fieldValues.value,
+      useYn: value,
+      useYnNm: value === 'Y' ? '사용' : value === 'N' ? '미사용' : ''
+    };
+  } else if (field === 'popupTy') {
+    fieldValues.value = {
+      ...fieldValues.value,
+      popupTy: value,
+      popupTyNm: value === 'layer' ? '레이어' : value === 'window' ? '윈도우' : ''
+    };
+  } else {
+    fieldValues.value[field] = value;
+  }
+
   const auiGrid = myGrid.value;
   const selectedItems = auiGrid.getSelectedItems();
+  
   if (selectedItems.length > 0) {
     const rowIndex = selectedItems[0].rowIndex;
     auiGrid.updateRow(fieldValues.value, rowIndex);

@@ -12,8 +12,15 @@ export const columnLayout = [
     filter: { showIcon: false },
   },
   {
-    headerText: "팝업유형",
+    headerText: "팝업유형(숨김)",
     dataField: "popupTy",
+    width: 100,
+    visible: false,
+    filter: { showIcon: false },
+  },
+  {
+    headerText: "팝업유형",
+    dataField: "popupTyNm",
     width: 100,
     filter: { showIcon: false },
   },
@@ -48,12 +55,22 @@ export const columnLayout = [
     filter: { showIcon: false },
   },
   {
-    headerText: "사용여부",
+    headerText: "사용여부(숨김)",
     dataField: "useYn",
     width: 80,
+    visible: false,
     filter: { showIcon: false },
-    labelFunction: (rowIndex, columnIndex, value, item) => {
-      return value === "Y" ? "사용" : "미사용";
-    },
+  },
+  {
+    headerText: "사용여부",
+    dataField: "useYnNm",
+    width: 80,
+    filter: { showIcon: false },
+  },
+  {
+    headerText: "팝업내용",
+    dataField: "popupCn",
+    width: 200,
+    filter: { showIcon: false },
   },
 ];
