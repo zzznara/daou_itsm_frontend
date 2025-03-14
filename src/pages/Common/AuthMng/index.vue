@@ -267,6 +267,7 @@ const handleMasterSearch = async () => {
     }
   } catch (error) {}
 };
+
 const handleMasterNew = () => {
   const auiGrid = myGrid.value;
   auiGrid.addRow(initItem, "last");

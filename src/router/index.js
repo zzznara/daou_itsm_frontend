@@ -44,6 +44,13 @@ const routes = [
         meta: { requiresAuth: true }, // 로그인이 필요한 경로
         component: () => import("@/pages/Common/CodeMng/index.vue"),
       },
+      //개발파일자동생성
+      {
+        path: "Common/AutoCreate",
+        name: "AutoCreate",
+        meta: { requiresAuth: true }, // 로그인이 필요한 경로
+        component: () => import("@/pages/Common/AutoCreate/index.vue"),
+      },
       {
         path: "Common/MenuMng",
         name: "MenuMng",
