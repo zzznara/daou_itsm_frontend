@@ -82,6 +82,12 @@ const routes = [
         component: () => import("@/pages/Common/AuthGroupMng/index.vue"),
       },
       {
+        path: "/Common/PopupMng",
+        name: "PopupMng",
+        meta: { requiresAuth: true }, // 로그인이 필요한 경로
+        component: () => import("@/pages/Common/PopupMng/index.vue"),
+      },
+      {
         path: "/Common/GroupMng",
         name: "GroupMng",
         meta: { requiresAuth: true }, // 로그인이 필요한 경로

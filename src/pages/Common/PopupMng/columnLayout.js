@@ -1,0 +1,59 @@
+export const columnLayout = [
+  {
+    headerText: "팝업아이디",
+    dataField: "popupId",
+    width: 120,
+    filter: { showIcon: false },
+  },
+  {
+    headerText: "팝업명",
+    dataField: "popupNm",
+    width: 150,
+    filter: { showIcon: false },
+  },
+  {
+    headerText: "팝업유형",
+    dataField: "popupTy",
+    width: 100,
+    filter: { showIcon: false },
+  },
+  {
+    headerText: "팝업URL",
+    dataField: "popupUrl",
+    width: 200,
+    filter: { showIcon: false },
+  },
+  {
+    headerText: "가로크기",
+    dataField: "width",
+    width: 80,
+    filter: { showIcon: false },
+  },
+  {
+    headerText: "세로크기",
+    dataField: "height",
+    width: 80,
+    filter: { showIcon: false },
+  },
+  {
+    headerText: "X좌표",
+    dataField: "positionX",
+    width: 80,
+    filter: { showIcon: false },
+  },
+  {
+    headerText: "Y좌표",
+    dataField: "positionY",
+    width: 80,
+    filter: { showIcon: false },
+  },
+  {
+    headerText: "사용여부",
+    dataField: "useYn",
+    width: 80,
+    filter: { showIcon: false },
+    labelFunction: (rowIndex, columnIndex, value, item) => {
+      return value === "Y" ? "사용" : "미사용";
+    },
+  },
+];
