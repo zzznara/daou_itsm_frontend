@@ -42,9 +42,10 @@
             :items="codeItems.useYn"
             item-title="title"
             item-value="value"
+            variant="outlined"
+            density="compact"
+            hide-details
             class="ip2"
-            clearable
-            placeholder="전체"
             @update:modelValue="handleChangeField"
           />
         </div>
@@ -61,23 +62,21 @@ const props = defineProps({
     type: Function,
     required: true,
   },
-  codeItems: {
-    type: Object,
-    required: true,
-    default: () => ({
-      useYn: [
-        { title: '사용', value: 'Y' },
-        { title: '미사용', value: 'N' }
-      ]
-    })
-  }
+});
+
+const codeItems = ref({
+  useYn: [
+    { title: "전체", value: "" },
+    { title: "사용", value: "Y" },
+    { title: "미사용", value: "N" },
+  ],
 });
 
 const initFields = ref({
   popupId: "",
   popupNm: "",
   popupTy: "",
-  useYn: ""
+  useYn: codeItems.value.useYn[0].value,
 });
 
 const handleChangeField = () => {
@@ -119,27 +118,55 @@ const handleChangeField = () => {
 }
 
 :deep(.v-select) {
-  width: 150px;
-}
+  .v-field {
+    border-radius: 4px !important;
+    border: 1px solid #ddd !important;
+    background-color: white !important;
+    height: 28px !important;
+    min-height: 28px !important;
+  }
 
-:deep(.v-field) {
-  border-radius: 4px;
-  border: 1px solid #ddd;
-  background-color: white !important;
-}
+  .v-field__input {
+    min-height: 28px !important;
+    padding: 0 8px !important;
+    font-size: 13px !important;
+  }
 
-:deep(.v-field--variant-filled .v-field__overlay) {
-  display: none;
-}
+  .v-field__append-inner {
+    padding-top: 2px !important;
+  }
 
-:deep(.v-field__input) {
-  padding: 8px !important;
-  min-height: unset !important;
+  .v-field--variant-outlined .v-field__outline {
+    display: none !important;
+  }
+
+  .v-field__clearable {
+    display: none !important;
+  }
 }
 
 :deep(.v-select__content) {
   border: 1px solid #ddd;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  .v-list {
+    padding: 4px !important;
+    
+    .v-list-item {
+      min-height: 28px !important;
+      padding: 0 8px !important;
+      font-size: 13px !important;
+      
+      &--active {
+        background-color: #edf2f7 !important;
+        color: #333 !important;
+      }
+      
+      &:hover {
+        background-color: #f8f9fa !important;
+      }
+    }
+  }
 }
 
 .ip2 {

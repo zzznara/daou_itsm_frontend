@@ -32,7 +32,7 @@
               v-model="fieldValues.popupId"
               name="popupId"
               class="ip2"
-              :disabled="isFieldDisabled(state, 'popupId', disabledFields)"
+              :disabled="state === 'created'"
               @input="handleChangeField"
             />
           </div>
@@ -138,16 +138,16 @@
         <li class="doublehalf">
           <div class="title"><span class="red">*</span>사용여부</div>
           <div class="formbox">
-            <SelectBox
-              :mastCd="'USE_YN'"
-              id="useYn"
-              :name="'useYn'"
-              :value="fieldValues.useYn"
-              :topSelected="'전체'"
-              :className="'ip2'"
+            <select
+              v-model="fieldValues.useYn"
+              class="ip2"
               :disabled="isFieldDisabled(state, 'useYn', disabledFields)"
-              :onChange="handleChangeField"
-            />
+              @change="handleChangeField"
+            >
+              <option value="">선택</option>
+              <option value="Y">사용</option>
+              <option value="N">미사용</option>
+            </select>
           </div>
         </li>
         <li style="height: 75px">
@@ -178,11 +178,10 @@ import AUIGrid from "@/static/AUIGrid-Vue.js/AUIGrid.vue";
 import { columnLayout } from "./columnLayout";
 import { defaultGridProps } from "../../../components/AuiGrid/gridLayout";
 import { isFieldDisabled } from "@/utils/validators";
-import { swalConfirm, Toast } from "@/components/Confirm/swal";
 import { useAppStore } from "@/stores/app";
 import { storeToRefs } from "pinia";
 import { useAxiosWithAuthorization } from "@/utils/api";
-import SelectBox from "@/components/SelectBox/index.vue";
+import { swalConfirm, Toast } from "@/components/Confirm/swal";
 
 const myGrid = ref();
 const appStore = useAppStore();
@@ -190,21 +189,21 @@ const { menuActionList, menuKey } = storeToRefs(appStore);
 
 const state = ref("normaled");
 const disabledFields = {
-  created: [],
-  updated: ["popupId"],
+  created: ['popupId'],
+  updated: ['popupId'],
 };
 const menuInfo = ref({});
 
 const initItem = {
   popupId: "",
   popupNm: "",
-  popupTy: "레이어",
+  popupTy: "",
   popupUrl: "",
-  width: 400,
-  height: 300,
-  positionX: 100,
-  positionY: 100,
-  useYn: "Y",
+  width: "",
+  height: "",
+  positionX: "",
+  positionY: "",
+  useYn: "",
   popupCn: "",
 };
 
@@ -301,9 +300,12 @@ const handleMasterSearch = async () => {
 
 const handleMasterNew = () => {
   const auiGrid = myGrid.value;
-  auiGrid.addRow(initItem, "last");
-  fieldValues.value = { ...initItem };
   state.value = "created";
+  fieldValues.value = { ...initItem };
+  auiGrid.clearGridData();
+  auiGrid.addRow(initItem, "first");
+  auiGrid.setSelectionByIndex(0, 0);
+  selectedRowIndex.value = 0;
 };
 
 const handleMasterDelete = async () => {
@@ -368,11 +370,12 @@ const handleMasterSave = async () => {
     }
 
     const requiredFields = ["popupNm", "popupTy", "useYn"];
-    const missingField = requiredFields.find(field => !fieldValues.value[field]);
-    if (missingField) {
+    const emptyFields = requiredFields.filter((field) => !fieldValues.value[field]);
+
+    if (emptyFields.length > 0) {
       Toast.fire({
         icon: "warning",
-        title: "필수 항목을 입력해주세요.",
+        title: "필수 입력값을 확인해주세요.",
       });
       return;
     }
@@ -381,28 +384,25 @@ const handleMasterSave = async () => {
     if (!result.isConfirmed) return;
 
     if (state.value === "created") {
-      const { data } = await useAxiosWithAuthorization({
+      const { data: idData } = await useAxiosWithAuthorization({
         url: "/common/popup/generateId",
         method: "GET",
       });
-      if (data?.data) {
-        fieldValues.value.popupId = data.data;
+
+      if (idData?.data) {
+        fieldValues.value.popupId = idData.data;
       } else {
         throw new Error("팝업 ID 생성에 실패했습니다.");
       }
     }
 
     const { data } = await useAxiosWithAuthorization({
-      url: SAVE_POPUP_URL,
+      url: "/common/popup/save",
       method: state.value === "created" ? "POST" : "PUT",
       data: fieldValues.value,
     });
 
     if (data?.success) {
-      const rowIndex = selectedItems[0].rowIndex;
-      if (state.value === "created") {
-        auiGrid.updateRow(fieldValues.value, rowIndex);
-      }
       state.value = "normaled";
       Toast.fire({
         icon: "success",
@@ -424,3 +424,5 @@ const handleMasterExcel = () => {
 };
 </script>
 
+<style scoped>
+</style>
